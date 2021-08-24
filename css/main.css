@@ -26,10 +26,10 @@ img {
 
 
 /* preloader */
-/*.preloader.hide{
+.preloader.hide{
 	opacity: 0;
 	transform: translate(0%, -100%);
-}*/
+}
 
 .preloader {
 	background: white;
