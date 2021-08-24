@@ -18,7 +18,7 @@ function image_loaded() {
   images_loaded_count++;
   
   perc_display.innerText = (( (100 / images_count) * images_loaded_count ) << 0) + "%";
-  if (images_loaded_count <= images_count) {
+  if (images_loaded_count >= images_count) {
     setTimeout(function () {
       if (!preloader.classList.contains('hide')) {
         preloader.classList.add('hide');
