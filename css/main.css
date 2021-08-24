@@ -26,10 +26,10 @@ img {
 
 
 /* preloader */
-.preloader.hide{
+/*.preloader.hide{
 	opacity: 0;
 	transform: translate(0%, -100%);
-}
+}*/
 
 .preloader {
 	background: white;
@@ -45,14 +45,6 @@ img {
 	align-items: center;
 	flex-direction: column;
 	transition: all 1s;
-}
-
-.preload_animation:after {
-	content: '';
-	height: 10px;
-	width: 240px;
-	background: linear-gradient(45deg, #e85757, #efd98d);
-	display: block;
 }
 
 .preload_animation :nth-child(1) { 
@@ -89,6 +81,18 @@ img {
     animation-iteration-count: infinite;
     -webkit-animation-name: preload_text;
     animation-name: preload_text;
+}
+
+.loadbar {
+	height: 10px;
+	width: 250px;
+	background-color: #fff;
+	display: block;
+}
+
+.loadbar_active {
+	background: linear-gradient(45deg, #e85757, #efd98d);
+	height: 10px;
 }
 
 .preload_percent {
