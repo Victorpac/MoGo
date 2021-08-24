@@ -25,6 +25,90 @@ img {
 }
 
 
+/* preloader */
+.preloader.hide{
+	opacity: 0;
+	transform: translate(0%, -100%);
+}
+
+.preloader {
+	background: white;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 999;
+	opacity: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	transition: all 1s;
+}
+
+.preload_animation:after {
+	content: '';
+	height: 10px;
+	width: 240px;
+	background: linear-gradient(45deg, #e85757, #efd98d);
+	display: block;
+}
+
+.preload_animation :nth-child(1) { 
+	color: #e85757; 
+}
+
+.preload_animation :nth-child(2) {
+	animation-delay: .3s;
+	color: #e4c454;
+}
+
+.preload_animation :nth-child(3) {
+	animation-delay: .6s;
+	color: #df7675;
+}
+
+.preload_animation :nth-child(4) {
+	animation-delay: .9s;
+	color: #efd98d;
+}
+
+.preload_animation span{
+	position: relative;
+	top: -50px;
+	font-size: 70px;
+	font-weight: bold;
+	-webkit-animation-direction: alternate;
+	animation-direction: alternate;
+	-webkit-animation-timing-function: ease-in;
+	animation-timing-function: ease-in;
+	-webkit-animation-duration: 1.5s;
+    animation-duration: 1.5s;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-name: preload_text;
+    animation-name: preload_text;
+}
+
+.preload_percent {
+	font-size: 50px;
+	font-weight: bold;
+}
+
+/* preload animation */
+@-webkit-keyframes preload_text {
+	0% { top: -50px; }
+
+	100% { top: 0px; }
+}
+
+@keyframes preload_text {
+	0% { top: -50px; }
+
+	100% { top: 0px; }
+}
+
 
 /* container */
 .container {
@@ -91,7 +175,7 @@ img {
     top: 0;
     left: 0;
     right: 0;
-    z-index: 1000;
+    z-index: 4;
 }
 
 .header__inner {
@@ -355,6 +439,10 @@ img {
 
 
 /* About us */
+.about_us * {
+	box-sizing: unset;
+}
+
 .title__question {
 	padding: 100px 0 20px;
 	font-family: 'Kaushan Script';
@@ -406,7 +494,10 @@ img {
 	max-width: 380px;
 }
 
-.pict__img {max-width: 100%}
+.pict__img {
+	max-width: 100%; 
+	box-sizing: unset;
+}
 
 .pict__img > img {
 	height: max-content
@@ -1279,6 +1370,10 @@ footer .sup__title {
     }
 
     /* About us */
+    .about_us * {
+    	box-sizing: border-box;
+    }
+
     .sup__title {
     	margin-bottom: 80px;
     }
