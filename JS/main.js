@@ -109,7 +109,6 @@ function showSlide(slide_id, slides=top_slider, dire=0) {
 	}
 }
 
-sliderTimer();
 
 
 
