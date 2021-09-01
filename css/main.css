@@ -1072,8 +1072,12 @@ img {
     position: relative;
 }
 
-.btn__back, .btn__next {
-	
+.testimonial > .btn__back:after {
+	left: 15%;
+}
+
+.testimonial > .btn__next:after {
+	left: 85%;
 }
 
 .quote__item img {
