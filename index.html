@@ -23,6 +23,78 @@
 </head>
 <body>
 
+	<style>
+		/* preloader */
+		.preloader.hide{
+			opacity: 0;
+			transform: translate(0%, -100%);
+		}
+		.preloader {
+			background: white;
+			position: fixed;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			z-index: 999;
+			opacity: 1;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			transition: all 1s;
+		}
+		.preload_animation :nth-child(1) { 
+			color: #e85757; 
+		}
+		.preload_animation :nth-child(2) {
+			animation-delay: .3s;
+			color: #e4c454;
+		}
+		.preload_animation :nth-child(3) {
+			animation-delay: .6s;
+			color: #df7675;
+		}
+		.preload_animation :nth-child(4) {
+			animation-delay: .9s;
+			color: #efd98d;
+		}
+		.preload_animation span{
+			position: relative;
+			top: -50px;
+			font-size: 70px;
+			font-weight: bold;
+			animation-direction: alternate;
+			animation-timing-function: ease-in;
+		    animation-duration: 1.5s;
+		    animation-iteration-count: infinite;
+		    animation-name: preload_text;
+		}
+		.loadbar {
+			height: 10px;
+			width: 250px;
+			background-color: #fff;
+			display: block;
+		}
+		.loadbar_active {
+			background: linear-gradient(45deg, #e85757, #efd98d);
+			height: 10px;
+		}
+		.preload_percent {
+			font-size: 50px;
+			font-weight: bold;
+		}
+		/* preload animation */
+		@-webkit-keyframes preload_text {
+			0% { top: -50px; }
+			100% { top: 0px; }
+		}
+		@keyframes preload_text {
+			0% { top: -50px; }
+			100% { top: 0px; }
+		}
+	</style>
+
 	<!-- preloader -->
 	<div class="preloader" id="preloader">
 		<div class="preload_animation">
@@ -36,6 +108,7 @@
 		</div>
 		<div class="preload_percent" id="preload_perc">0%</div>
 	</div>
+
 
 	<header class="header">
 	    <div class="container">
@@ -863,8 +936,42 @@
 	</footer>
 
 
+	<!-- Preloader -->
+	<script>
+		let 
+		  images = document.images,
+		  images_count = images.length,
+		  images_loaded_count = 0,
+		  preloader = document.getElementById('preloader'),
+		  loadbar = document.getElementById('load_done'),
+		  perc_display = document.getElementById('preload_perc');
+
+
+		for (let i = images_loaded_count; i < images_count; i++) {
+		  image_clone = new Image()
+		  image_clone.onload = image_loaded;
+		  image_clone.onerror = image_loaded;
+		  image_clone.src = images[i].src;
+		}
+
+
+		function image_loaded() {
+		  images_loaded_count++;
+		  let load_percent = (( (100 / images_count) * images_loaded_count ) << 0) + "%";
+		  perc_display.innerText = load_percent;
+		  loadbar.style.width = load_percent;
+		  
+		  if (images_loaded_count >= images_count) {
+		    setTimeout(function () {
+		      if (!preloader.classList.contains('hide')) {
+		        preloader.classList.add('hide');
+		      }
+		    }, 300)
+		  }
+		}
+	</script>	
+
 	<!-- Connect JS -->
-	<script src="JS/preloader.js"></script>
 	<script type="text/javascript" src="JS/main.js"></script>
 
 
