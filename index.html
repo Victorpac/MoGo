@@ -5,10 +5,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- Connect style -->
-	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/main.min.css">
 
 	<!-- Connect JS -->
-	<script type="text/javascript" src="JS/main.js"></script>
+	
 
 	<!-- Connect fonts -->
 	<link rel="preconnect" href="https://fonts.gstatic.com">
@@ -54,6 +54,7 @@
 	                </a>
 	            </nav>
 
+	            <!-- mobile version -->
 	            <!-- Drop-dwon menu -->
 	            <div class="menu" id="menu">
 	            	<div class="icon" onclick="openMenu()">
@@ -90,36 +91,72 @@
 
 	<div class="intro">
 	    <div class="container">
-	        <div class="intro__inner">
-	            <h2 class="intro__suptitle">Creative Template</h2>
-	            <h1 class="intro__title">Welcome to MoGo</h1>
+	        <div class="slider" id="slider_inner">
 
-	            <a class="btn" href="#">Learn More</a>
-	        </div>
+	        	<div class="slider_item_1 active" style="background-image: url('media/images/webp/title_banner__bg.webp');">
+	        		<div class="intro__inner">
+			            <h2 class="intro__suptitle">Creative Template</h2>
+			            <h1 class="intro__title">Welcome to MoGo</h1>
+			            <a class="btn" href="#">Learn More</a>
+			        </div>
+	        	</div>
+
+	        	<div class="slider_item_2 next" style="background-image: url('https://bgpics.ru/pictures/1920x1080/6949-fonyi-siniy-fon-dlya-sayta-1920x1080.jpg');">
+	        		<div class="intro__inner">
+			            <h2 class="intro__suptitle">Creative Template</h2>
+			            <h1 class="intro__title">Welcome to MoGo</h1>
+			            <a class="btn" href="#">Learn More</a>
+			        </div>
+	        	</div>
+
+	        	<div class="slider_item_3" style="background-image: url('https://images8.alphacoders.com/914/thumb-1920-914289.jpg');">
+	        		<div class="intro__inner">
+			            <h2 class="intro__suptitle">Creative Template</h2>
+			            <h1 class="intro__title">Welcome to MoGo</h1>
+			            <a class="btn" href="#">Learn More</a>
+			        </div>
+	        	</div>
+
+	        	<div class="slider_item_4 back" style="background-image: url('https://storge.pic2.me/c/1360x800/414/58603d7ec53b6.jpg');">
+	        		<div class="intro__inner">
+			            <h2 class="intro__suptitle">Creative Template</h2>
+			            <h1 class="intro__title">Welcome to MoGo</h1>
+			            <a class="btn" href="#">Learn More</a>
+			        </div>
+	        	</div>
+
+
+	        	<div class="slider_nav">
+			        <div class="container">
+			            <div class="slider_nav__inner" id="slider_nav-bar">
+			                <div class="slider_progress_item_1 active" onclick="showSlide(0)">
+			                	<div class="timer_progress" style="width: 0%"></div>
+			                    <span class="slider__num">01</span>
+			                    <span class="slider__text">Intro</span>
+			                </div>
+			                <div class="slider_progress_item_2" onclick="showSlide(1)">
+			                	<div class="timer_progress" style="width: 0%"></div>
+			                    <span class="slider__num">02</span>
+			                    <span class="slider__text">Work</span>
+			                </div>
+			                <div class="slider_progress_item_3" onclick="showSlide(2)">
+			                	<div class="timer_progress" style="width: 0%"></div>
+			                    <span class="slider__num">03</span>
+			                    <span class="slider__text">About</span>
+			                </div>
+			                <div class="slider_progress_item_4" onclick="showSlide(3)">
+			                	<div class="timer_progress" style="width: 0%"></div>
+			                    <span class="slider__num">04</span>
+			                    <span class="slider__text">Contacts</span>
+			                </div>
+			            </div>
+			        </div>
+			    </div> <!-- /.slider_progress -->
+
+	        </div> <!-- /.slider -->
 	    </div>
 
-	    <div class="slider">
-	        <div class="container">
-	            <div class="slider__inner">
-	                <div class="slider__item active">
-	                    <span class="slider__num">01</span>
-	                    <span class="slider__text">Intro</span>
-	                </div>
-	                <div class="slider__item">
-	                    <span class="slider__num">02</span>
-	                    <span class="slider__text">Work</span>
-	                </div>
-	                <div class="slider__item">
-	                    <span class="slider__num">03</span>
-	                    <span class="slider__text">About</span>
-	                </div>
-	                <div class="slider__item">
-	                    <span class="slider__num">04</span>
-	                    <span class="slider__text">Contacts</span>
-	                </div>
-	            </div>
-	        </div>
-	    </div>
+	    
 
 	</div><!-- /.intro -->
 
@@ -146,7 +183,7 @@
 					</div>
 				</a>
 
-				<a href="#" class="slide">
+				<a href="#" class="slide" id="slide__test">
 					<div class="pict">
 						<div class="pict__img">
 							<img src="media/images/webp/pict_2.webp">
@@ -333,17 +370,33 @@
 
 	<!-- Quotes -->
 	<div class="quote">
+		<a class="btn__back" onclick="showSlide(0, quote_slider, -1);"></a>
 		<div class="container" style="display: flex;">
-			<a href="#" class="quote__btn quote__btn--prev"></a>
 			<div class="quote__inner">
-				<img src="media/icons/icon__messages.png" alt="">
-				<div class="quote__inner_content">
-					<p class="quote__text">“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.”</p>
-				<p class="quote__author">Jon Doe</p>
+				<div class="quote_item slider_item active">
+					<img src="media/icons/icon__messages.png" alt="">
+					<div class="quote__inner_content">
+						<p class="quote__text">“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.”</p>
+					<p class="quote__author">Jon Doe</p>
+					</div>
+				</div>
+				<div class="quote_item slider_item next">
+					<img src="media/icons/icon__messages.png" alt="">
+					<div class="quote__inner_content">
+						<p class="quote__text">“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.”</p>
+					<p class="quote__author">Jon Doe</p>
+					</div>
+				</div>
+				<div class="quote_item slider_item back">
+					<img src="media/icons/icon__messages.png" alt="">
+					<div class="quote__inner_content">
+						<p class="quote__text">“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.”</p>
+					<p class="quote__author">Jon Doe</p>
+					</div>
 				</div>
 			</div>
-			<a href="#" class="quote__btn quote__btn--next"></a>
 		</div>
+		<a class="btn__next" onclick="showSlide(0, quote_slider, 1);"></a>
 	</div>
 
 	<!-- Banner "Our team" -->
@@ -562,25 +615,37 @@
 
 	<!-- "testimonial" -->
 	<div class="testimonial">
+		<div class="btn__back"></div>
 		<div class="container">
 
-			<div class="back arrow">
-				<img src="media/icons/menu__condition.png" class="forward__arrow_icon">
-			</div>
-
 			<div class="quote__inner">
-				<img src="media/images/webp/testimonial__ava.webp" alt="">
-				<div class="quote__inner_content">
-					<p class="quote__text">“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.”</p>
-				<p class="quote__author">Jon Doe</p>
+				<div class="quote_item slider_item_1 active">
+					<img src="media/images/webp/testimonial__ava.webp" alt="">
+					<div class="quote__inner_content">
+						<p class="quote__text">“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.”</p>
+					<p class="quote__author">Jon Doe</p>
+					</div>
+				</div>
+				<div class="quote_item slider_item_2 next">
+					<img src="media/images/webp/testimonial__ava.webp" alt="">
+					<div class="quote__inner_content">
+						<p class="quote__text">“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.”</p>
+					<p class="quote__author">Jon Doe</p>
+					</div>
+				</div>
+				<div class="quote_item slider_item_1 back">
+					<img src="media/images/webp/testimonial__ava.webp" alt="">
+					<div class="quote__inner_content">
+						<p class="quote__text">“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.”</p>
+					<p class="quote__author">Jon Doe</p>
+					</div>
 				</div>
 			</div>
-			<div class="forward arrow">
-				<img src="media/icons/menu__condition.png" class="forward__arrow_icon">
-			</div>
-
 		</div> <!-- /.container -->
+
+		<div class="btn__next"></div>
 	</div> <!-- /.testimonial -->
+
 
 	<!-- Banner "What people say" -->
 	<div class="clients">
@@ -797,5 +862,8 @@
 
 	<!-- Connect JS -->
 	<script src="JS/preloader.js"></script>
+	<script type="text/javascript" src="JS/main.js"></script>
+
+
 </body>
 </html><a>
