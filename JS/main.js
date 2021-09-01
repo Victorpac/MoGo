@@ -31,7 +31,7 @@ function FullScreenPict(id) {
 // Slider
 let 
   top_slider 					= document.querySelectorAll('[class^="slider_item"]'),
-  quote_slider				= document.getElementsByName('quote')[0].getElementsByClassName('quote_item'),
+  quote_slider				= document.getElementsByClassName('quote')[0].getElementsByClassName('quote_item'),
   slider_nav 					= document.querySelectorAll('[class^="slider_progress"]'),
   delay 							= 7;					// lead time (time / 1000)
 
@@ -43,7 +43,9 @@ function sliderTimer(slides=top_slider) {
 	window.timerId = setTimeout(function timer() {	
 		timer_count++;
 		if (timer_count <= 1000) {
-			document.querySelector('[class^="slider_progress_item"].active .timer_progress').style.width = timer_count/10 + '%';
+			if (slides == top_slider) {
+				document.querySelector('[class^="slider_progress_item"].active .timer_progress').style.width = timer_count/10 + '%';
+			}
 			window.timerId = setTimeout(timer, delay);
 		}else {
 			for (let i = 0; i < slides.length; i++) {
