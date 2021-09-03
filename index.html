@@ -5,12 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- Connect style -->
-	<!-- <link rel="stylesheet" type="text/css" href="css/main.min.css"> -->
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-
-
-	<!-- Connect JS -->
-	
+	<link rel="stylesheet" type="text/css" href="css/main.min.css">
 
 	<!-- Connect fonts -->
 	<link rel="preconnect" href="https://fonts.gstatic.com">
@@ -95,7 +90,7 @@
 		}
 	</style>
 
-	<!-- preloader -->
+	<!-- preloader styles -->
 	<div class="preloader" id="preloader">
 		<div class="preload_animation">
 			<span>M</span>
@@ -108,7 +103,6 @@
 		</div>
 		<div class="preload_percent" id="preload_perc">0%</div>
 	</div>
-
 
 	<header class="header">
 	    <div class="container">
@@ -163,12 +157,11 @@
 	    </div> <!-- /.container -->
 	</header>
 
-
 	<div class="intro">
 	    <div class="container">
 	        <div class="slider" id="slider_inner">
 
-	        	<div class="slider_item_1 active" style="background-image: url('media/images/webp/title_banner__bg.webp');">
+	        	<div class="slider_item active" style="background-image: url('media/images/webp/title_banner__bg.webp');">
 	        		<div class="intro__inner">
 			            <h2 class="intro__suptitle">Creative Template</h2>
 			            <h1 class="intro__title">Welcome to MoGo</h1>
@@ -176,7 +169,7 @@
 			        </div>
 	        	</div>
 
-	        	<div class="slider_item_2 next" style="background-image: url('https://bgpics.ru/pictures/1920x1080/6949-fonyi-siniy-fon-dlya-sayta-1920x1080.jpg');">
+	        	<div class="slider_item next" style="background-image: url('https://bgpics.ru/pictures/1920x1080/6949-fonyi-siniy-fon-dlya-sayta-1920x1080.jpg');">
 	        		<div class="intro__inner">
 			            <h2 class="intro__suptitle">Creative Template</h2>
 			            <h1 class="intro__title">Welcome to MoGo</h1>
@@ -184,7 +177,7 @@
 			        </div>
 	        	</div>
 
-	        	<div class="slider_item_3" style="background-image: url('https://images8.alphacoders.com/914/thumb-1920-914289.jpg');">
+	        	<div class="slider_item" style="background-image: url('https://images8.alphacoders.com/914/thumb-1920-914289.jpg');">
 	        		<div class="intro__inner">
 			            <h2 class="intro__suptitle">Creative Template</h2>
 			            <h1 class="intro__title">Welcome to MoGo</h1>
@@ -192,7 +185,7 @@
 			        </div>
 	        	</div>
 
-	        	<div class="slider_item_4 back" style="background-image: url('https://storge.pic2.me/c/1360x800/414/58603d7ec53b6.jpg');">
+	        	<div class="slider_item back" style="background-image: url('https://storge.pic2.me/c/1360x800/414/58603d7ec53b6.jpg');">
 	        		<div class="intro__inner">
 			            <h2 class="intro__suptitle">Creative Template</h2>
 			            <h1 class="intro__title">Welcome to MoGo</h1>
@@ -230,11 +223,7 @@
 
 	        </div> <!-- /.slider -->
 	    </div>
-
-	    
-
 	</div><!-- /.intro -->
-
 
 	<!-- Banner "about us" -->
 	<div class="about_us">
@@ -287,7 +276,6 @@
 		</div>
 	</div>
 
-
 	<!-- Banner "facts" -->
 	<div class="facts">
 		<div class="container" style="display: flex;">
@@ -323,7 +311,6 @@
 			</div>
 		</div>
 	</div>
-
 
 	<!-- Banner about our partners -->
 	<div class="partners">
@@ -398,7 +385,6 @@
 		<img src="media/images/webp/tablet.webp" class="feature_img_1" alt="">
 		<img src="media/images/webp/phone.webp" class="feature_img_2" alt="">
 	</div>
-
 
 	<!-- Banner service (2) -->
 	<div class="service">
@@ -690,7 +676,7 @@
 
 	<!-- "testimonial" -->
 	<div class="testimonial">
-		<div class="btn__back"></div>
+		<div class="btn__back" onclick="showSlide(0, tstmn_slider, -1)"></div>
 		<div class="container">
 			<div class="quote__inner">
 
@@ -719,9 +705,8 @@
 			</div>
 		</div> <!-- /.container -->
 
-		<div class="btn__next"></div>
+		<div class="btn__next" onclick="showSlide(0, tstmn_slider, 1)"></div>
 	</div> <!-- /.testimonial -->
-
 
 	<!-- Banner "What people say" -->
 	<div class="clients">
@@ -841,7 +826,6 @@
 		</div> <!-- /.container -->
 	</div>  <!-- /.blog -->
 
-
 	<!-- map -->
 	<div class="map">
 		<div class="map__inner">
@@ -849,7 +833,6 @@
 			<a href="#">open map</a>
 		</div>
 	</div>
-
 
 	<!-- Footer -->
 	<footer>
@@ -935,17 +918,15 @@
 		<div id="full__bg" class=""></div>
 	</footer>
 
-
-	<!-- Preloader -->
+	<!-- Preloader script -->
 	<script>
 		let 
-		  images = document.images,
+		  images = document.images + document.style,
 		  images_count = images.length,
 		  images_loaded_count = 0,
 		  preloader = document.getElementById('preloader'),
 		  loadbar = document.getElementById('load_done'),
 		  perc_display = document.getElementById('preload_perc');
-
 
 		for (let i = images_loaded_count; i < images_count; i++) {
 		  image_clone = new Image()
@@ -953,7 +934,6 @@
 		  image_clone.onerror = image_loaded;
 		  image_clone.src = images[i].src;
 		}
-
 
 		function image_loaded() {
 		  images_loaded_count++;
@@ -966,15 +946,14 @@
 		      if (!preloader.classList.contains('hide')) {
 		        preloader.classList.add('hide');
 		      }
-			sliderTimer();
+		      sliderTimer();
 		    }, 300)
 		  }
 		}
-	</script>	
-
+	</script>
+	
 	<!-- Connect JS -->
 	<script type="text/javascript" src="JS/main.js"></script>
-
 
 </body>
 </html><a>
