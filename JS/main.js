@@ -30,9 +30,10 @@ function FullScreenPict(id) {
 
 // Slider
 let 
-  top_slider 					= document.querySelectorAll('[class^="slider_item"]'),
-  quote_slider				= document.getElementsByClassName('quote')[0].getElementsByClassName('quote_item'),
-  slider_nav 					= document.querySelectorAll('[class^="slider_progress"]'),
+  top_slider 					= document.querySelectorAll('[class^="slider_item"]'),    // Main slider (in top banner of site)
+  quote_slider				= document.getElementsByClassName('quote')[0].getElementsByClassName('quote_item'),  			// Slider in class quote
+  tstmn_slider        = document.getElementsByClassName('testimonial')[0].getElementsByClassName('quote_item'),  // Slider in class testimonial
+  slider_nav 					= document.querySelectorAll('[class^="slider_progress"]'), // Navigation panel for top slider
   delay 							= 7;					// lead time (time / 1000)
 
 
