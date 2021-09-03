@@ -161,7 +161,8 @@
 	    <div class="container">
 	        <div class="slider" id="slider_inner">
 
-	        	<div class="slider_item active" style="background-image: url('media/images/webp/title_banner__bg.webp');">
+	        	<div class="slider_item active">
+	        		<img src="media/images/webp/title_banner__bg.webp" alt="В вашем браузере данный формат картинок не поддерживается">
 	        		<div class="intro__inner">
 			            <h2 class="intro__suptitle">Creative Template</h2>
 			            <h1 class="intro__title">Welcome to MoGo</h1>
@@ -169,7 +170,8 @@
 			        </div>
 	        	</div>
 
-	        	<div class="slider_item next" style="background-image: url('https://bgpics.ru/pictures/1920x1080/6949-fonyi-siniy-fon-dlya-sayta-1920x1080.jpg');">
+	        	<div class="slider_item next">
+	        		<img src="https://bgpics.ru/pictures/1920x1080/6949-fonyi-siniy-fon-dlya-sayta-1920x1080.jpg" alt="В вашем браузере данный формат картинок не поддерживается">
 	        		<div class="intro__inner">
 			            <h2 class="intro__suptitle">Creative Template</h2>
 			            <h1 class="intro__title">Welcome to MoGo</h1>
@@ -177,7 +179,8 @@
 			        </div>
 	        	</div>
 
-	        	<div class="slider_item" style="background-image: url('https://images8.alphacoders.com/914/thumb-1920-914289.jpg');">
+	        	<div class="slider_item">
+	        		<img src="https://images8.alphacoders.com/914/thumb-1920-914289.jpg" alt="В вашем браузере данный формат картинок не поддерживается">
 	        		<div class="intro__inner">
 			            <h2 class="intro__suptitle">Creative Template</h2>
 			            <h1 class="intro__title">Welcome to MoGo</h1>
@@ -185,7 +188,8 @@
 			        </div>
 	        	</div>
 
-	        	<div class="slider_item back" style="background-image: url('https://storge.pic2.me/c/1360x800/414/58603d7ec53b6.jpg');">
+	        	<div class="slider_item back">
+	        		<img src="https://storge.pic2.me/c/1360x800/414/58603d7ec53b6.jpg" alt="В вашем браузере данный формат картинок не поддерживается">
 	        		<div class="intro__inner">
 			            <h2 class="intro__suptitle">Creative Template</h2>
 			            <h1 class="intro__title">Welcome to MoGo</h1>
@@ -921,7 +925,7 @@
 	<!-- Preloader script -->
 	<script>
 		let 
-		  images = document.images + document.style,
+		  images = document.images,
 		  images_count = images.length,
 		  images_loaded_count = 0,
 		  preloader = document.getElementById('preloader'),
@@ -950,6 +954,23 @@
 		    }, 300)
 		  }
 		}
+	</script>
+
+	<script>
+		let
+		  el = document.querySelectorAll('body > div'),
+		  count_el = el.length,
+		  count_loaded_el = 0,
+		  preloader = document.getElementById('preloader'),
+		  loadbar = document.getElementById('load_done'),
+		  perc_display = document.getElementById('preload_perc');
+
+		function images_load () {
+			el.forEach(function () {
+				
+			})
+		}
+
 	</script>
 	
 	<!-- Connect JS -->
