@@ -1,0 +1,4 @@
+gulpfile.js
+*.json
+node_modules/, slick/
+test.html
