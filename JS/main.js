@@ -30,6 +30,47 @@ function FullScreenPict(id) {
 
 // Slider
 let 
+	top_sliderLst				= document.getElementById('top_slider'),
+	sli_nav 						= document.getElementById('slider_nav'),
+	windowWidth 				= window.screen.width;
+
+
+function nextSlide(slider) {				// work
+	let 
+		vp 						= slider.parentElement,
+		slItem_count 	= slider.childElementCount,
+		list_offset		= slider.offsetLeft,
+		slideNow 			= (-list_offset / (slider.offsetWidth/slItem_count))+1;
+
+	if (slideNow >= slItem_count) {
+		slider.style.left = '0';
+	}else {
+		slider.style.left = '-' + vp.offsetWidth*slideNow + 'px';
+	}
+}
+
+function prevSlide(slider, slideNow) {
+	let 
+		sli_list 	= slider.getElementsByClassName('slider_list')[0],
+		sItem_count = slItem_count;
+
+	if (sliderNow <= 1) {
+		slider.style.left = '-' + vp.offsetWidth*(slItem_count-1) + 'px';
+		slideNow = slItem_count;
+	}else {
+		slideNow--;
+		slider.style.left = '-' + vp.offsetWidth*(slideNow-1) + 'px';
+	}
+}
+
+
+
+
+
+
+
+// old slider
+let 
   top_slider 					= document.querySelectorAll('[class^="slider_item"]'),    // Main slider (in top banner of site)
   quote_slider				= document.getElementsByClassName('quote')[0].getElementsByClassName('quote_item'),  			// Slider in class quote
   tstmn_slider        = document.getElementsByClassName('testimonial')[0].getElementsByClassName('quote_item'),  // Slider in class testimonial

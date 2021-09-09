@@ -5,7 +5,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- Connect style -->
-	<link rel="stylesheet" type="text/css" href="css/main.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="css/main.min.css"> -->
+	<link rel="stylesheet" type="text/css" href="css/main.css">
 
 	<!-- Connect fonts -->
 	<link rel="preconnect" href="https://fonts.gstatic.com">
@@ -123,8 +124,7 @@
 	                </a>
 	            </nav>
 
-	            <!-- mobile version -->
-	            <!-- Drop-dwon menu -->
+	            <!-- Drop-dwon menu (mobile version) -->
 	            <div class="menu" id="menu">
 	            	<div class="icon" onclick="openMenu()">
 	            		<div></div>
@@ -149,81 +149,126 @@
 		                    <i class="fas fa-shopping-cart"></i>
 		                </a>
 	            	</div>
-
 	            </div> <!-- /.menu -->
 
 	        </div> <!-- /.header__inner -->
-
 	    </div> <!-- /.container -->
 	</header>
 
-	<div class="intro">
+	<!-- Slider -->
+	<div class="header_slider">
+		<div class="viewport">
+
+			<div id="btn__next" onclick="nextSlide(top_sliderLst)"></div>
+			<div id="btn__prev" onclick="prevSlide(top_sliderLst)"></div>
+
+			<ul class="slide_list" id="top_slider" style="width: calc(100vw * 4); left: 0;">
+				<li class="slide_item" style="background-image: url('media/images/webp/title_banner__bg.webp');">
+					<div class="slide__inner">
+						<h2 class="inner__suptitle">Creative Template</h2>
+						<h1 class="inner__title">Welcome to MoGo</h1>
+						<a href="#" class="inner__button">Learn More</a>
+					</div>
+				</li>
+				<li class="slide_item" style="background-image: url('https://bgpics.ru/pictures/1920x1080/6949-fonyi-siniy-fon-dlya-sayta-1920x1080.jpg');">
+					<div class="slide__inner">
+						<h2 class="inner__suptitle">Creative Template</h2>
+						<h1 class="inner__title">Welcome to MoGo</h1>
+						<a href="" class="inner__button">Learn More</a>
+					</div>
+				</li>
+				<li class="slide_item" style="background-image: url('https://images8.alphacoders.com/914/thumb-1920-914289.jpg');">
+					<div class="slide__inner">
+						<h2 class="inner__suptitle">Creative Template</h2>
+						<h1 class="inner__title">Welcome to MoGo</h1>
+						<a href="" class="inner__button">Learn More</a>
+					</div>
+				</li>
+				<li class="slide_item" style="background-image: url('https://storge.pic2.me/c/1360x800/414/58603d7ec53b6.jpg');">
+					<div class="slide__inner">
+						<h2 class="inner__suptitle">Creative Template</h2>
+						<h1 class="inner__title">Welcome to MoGo</h1>
+						<a href="" class="inner__button">Learn More</a>
+					</div>
+				</li>
+			</ul>
+
+			<div class="slider_nav" id="slider_nav">
+		        <div class="container">
+		            <div class="slider_nav__inner" id="slider_nav-bar">
+		                <div class="slider_progress_item_1 active" onclick="showSlide(0)">
+		                	<div class="timer_progress" style="width: 0%"></div>
+		                    <span class="slider__num">01</span>
+		                    <span class="slider__text">Intro</span>
+		                </div>
+		                <div class="slider_progress_item_2" onclick="showSlide(1)">
+		                	<div class="timer_progress" style="width: 0%"></div>
+		                    <span class="slider__num">02</span>
+		                    <span class="slider__text">Work</span>
+		                </div>
+		                <div class="slider_progress_item_3" onclick="showSlide(2)">
+		                	<div class="timer_progress" style="width: 0%"></div>
+		                    <span class="slider__num">03</span>
+		                    <span class="slider__text">About</span>
+		                </div>
+		                <div class="slider_progress_item_4" onclick="showSlide(3)">
+		                	<div class="timer_progress" style="width: 0%"></div>
+		                    <span class="slider__num">04</span>
+		                    <span class="slider__text">Contacts</span>
+		                </div>
+		            </div>
+		        </div>
+		    </div> <!-- /.slider_nav -->
+		</div>
+	</div>
+
+
+	<!-- <div class="intro">
 	    <div class="container">
 	        <div class="slider" id="slider_inner">
 
-	        	<div class="slider_item active" style="background-image: url('media/images/webp/title_banner__bg.webp');">
-	        		<div class="intro__inner">
-			            <h2 class="intro__suptitle">Creative Template</h2>
-			            <h1 class="intro__title">Welcome to MoGo</h1>
-			            <a class="btn" href="#">Learn More</a>
-			        </div>
+	        	<div class="viewport">
+	        		<div class="slidewrapper">
+	        			<div class="slider_item active" style="background-image: url('media/images/webp/title_banner__bg.webp');">
+			        		<div class="intro__inner">
+					            <h2 class="intro__suptitle">Creative Template</h2>
+					            <h1 class="intro__title">Welcome to MoGo</h1>
+					            <a class="btn" href="#">Learn More</a>
+					        </div>
+			        	</div>
+
+			        	<div class="slider_item next" style="background-image: url('');">
+			        		<div class="intro__inner">
+					            <h2 class="intro__suptitle">Creative Template</h2>
+					            <h1 class="intro__title">Welcome to MoGo</h1>
+					            <a class="btn" href="#">Learn More</a>
+					        </div>
+			        	</div>
+
+			        	<div class="slider_item" style="background-image: url('');">
+			        		<div class="intro__inner">
+					            <h2 class="intro__suptitle">Creative Template</h2>
+					            <h1 class="intro__title">Welcome to MoGo</h1>
+					            <a class="btn" href="#">Learn More</a>
+					        </div>
+			        	</div>
+
+			        	<div class="slider_item back" style="background-image: url('');">
+			        		<div class="intro__inner">
+					            <h2 class="intro__suptitle">Creative Template</h2>
+					            <h1 class="intro__title">Welcome to MoGo</h1>
+					            <a class="btn" href="#">Learn More</a>
+					        </div>
+			        	</div>
+	        		</div>
 	        	</div>
 
-	        	<div class="slider_item next" style="background-image: url('https://bgpics.ru/pictures/1920x1080/6949-fonyi-siniy-fon-dlya-sayta-1920x1080.jpg');">
-	        		<div class="intro__inner">
-			            <h2 class="intro__suptitle">Creative Template</h2>
-			            <h1 class="intro__title">Welcome to MoGo</h1>
-			            <a class="btn" href="#">Learn More</a>
-			        </div>
-	        	</div>
 
-	        	<div class="slider_item" style="background-image: url('https://images8.alphacoders.com/914/thumb-1920-914289.jpg');">
-	        		<div class="intro__inner">
-			            <h2 class="intro__suptitle">Creative Template</h2>
-			            <h1 class="intro__title">Welcome to MoGo</h1>
-			            <a class="btn" href="#">Learn More</a>
-			        </div>
-	        	</div>
+	        	
 
-	        	<div class="slider_item back" style="background-image: url('https://storge.pic2.me/c/1360x800/414/58603d7ec53b6.jpg');">
-	        		<div class="intro__inner">
-			            <h2 class="intro__suptitle">Creative Template</h2>
-			            <h1 class="intro__title">Welcome to MoGo</h1>
-			            <a class="btn" href="#">Learn More</a>
-			        </div>
-	        	</div>
-
-
-	        	<div class="slider_nav">
-			        <div class="container">
-			            <div class="slider_nav__inner" id="slider_nav-bar">
-			                <div class="slider_progress_item_1 active" onclick="showSlide(0)">
-			                	<div class="timer_progress" style="width: 0%"></div>
-			                    <span class="slider__num">01</span>
-			                    <span class="slider__text">Intro</span>
-			                </div>
-			                <div class="slider_progress_item_2" onclick="showSlide(1)">
-			                	<div class="timer_progress" style="width: 0%"></div>
-			                    <span class="slider__num">02</span>
-			                    <span class="slider__text">Work</span>
-			                </div>
-			                <div class="slider_progress_item_3" onclick="showSlide(2)">
-			                	<div class="timer_progress" style="width: 0%"></div>
-			                    <span class="slider__num">03</span>
-			                    <span class="slider__text">About</span>
-			                </div>
-			                <div class="slider_progress_item_4" onclick="showSlide(3)">
-			                	<div class="timer_progress" style="width: 0%"></div>
-			                    <span class="slider__num">04</span>
-			                    <span class="slider__text">Contacts</span>
-			                </div>
-			            </div>
-			        </div>
-			    </div> <!-- /.slider_progress -->
-
-	        </div> <!-- /.slider -->
+	        </div>
 	    </div>
-	</div><!-- /.intro -->
+	</div> -->
 
 	<!-- Banner "about us" -->
 	<div class="about_us">
