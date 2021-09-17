@@ -18,7 +18,6 @@ gulp.task('action', function () {
 
 
 gulp.task('default', function () {
-
 	livereload.listen();
 	gulp.watch(['./css/main.css'], gulp.series('action'));
 });

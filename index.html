@@ -7,6 +7,7 @@
 	<!-- Connect style -->
 	<link rel="stylesheet" type="text/css" href="css/main.min.css">
 
+
 	<!-- Connect fonts -->
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
@@ -123,8 +124,7 @@
 	                </a>
 	            </nav>
 
-	            <!-- mobile version -->
-	            <!-- Drop-dwon menu -->
+	            <!-- Drop-dwon menu (mobile version) -->
 	            <div class="menu" id="menu">
 	            	<div class="icon" onclick="openMenu()">
 	            		<div></div>
@@ -149,85 +149,78 @@
 		                    <i class="fas fa-shopping-cart"></i>
 		                </a>
 	            	</div>
-
 	            </div> <!-- /.menu -->
 
 	        </div> <!-- /.header__inner -->
-
 	    </div> <!-- /.container -->
 	</header>
 
-	<div class="intro">
-	    <div class="container">
-	        <div class="slider" id="slider_inner">
+	<!-- Slider -->
+	<div class="header_slider">
+		<div class="viewport">
 
-	        	<div class="slider_item active">
-	        		<img src="media/images/webp/title_banner__bg.webp" alt="В вашем браузере данный формат картинок не поддерживается">
-	        		<div class="intro__inner">
-			            <h2 class="intro__suptitle">Creative Template</h2>
-			            <h1 class="intro__title">Welcome to MoGo</h1>
-			            <a class="btn" href="#">Learn More</a>
-			        </div>
-	        	</div>
+			<div id="btn__next" onclick="showSlide(top_sliderLst, 0)"></div>
+			<div id="btn__prev" onclick="showSlide(top_sliderLst, -1)"></div>
 
-	        	<div class="slider_item next">
-	        		<img src="https://bgpics.ru/pictures/1920x1080/6949-fonyi-siniy-fon-dlya-sayta-1920x1080.jpg" alt="В вашем браузере данный формат картинок не поддерживается">
-	        		<div class="intro__inner">
-			            <h2 class="intro__suptitle">Creative Template</h2>
-			            <h1 class="intro__title">Welcome to MoGo</h1>
-			            <a class="btn" href="#">Learn More</a>
-			        </div>
-	        	</div>
+			<ul class="slide_list" id="top_slider" style="width: calc(100vw * 4); left: 0;">
+				<li class="slide_item" style="background-image: url('media/images/webp/title_banner__bg.webp');">
+					<div class="slide__inner">
+						<h2 class="inner__suptitle">Creative Template</h2>
+						<h1 class="inner__title">Welcome to MoGo</h1>
+						<a href="#" class="inner__button">Learn More</a>
+					</div>
+				</li>
+				<li class="slide_item" style="background-image: url('https://bgpics.ru/pictures/1920x1080/6949-fonyi-siniy-fon-dlya-sayta-1920x1080.jpg');">
+					<div class="slide__inner">
+						<h2 class="inner__suptitle">Creative Template</h2>
+						<h1 class="inner__title">Welcome to MoGo</h1>
+						<a href="" class="inner__button">Learn More</a>
+					</div>
+				</li>
+				<li class="slide_item" style="background-image: url('https://images8.alphacoders.com/914/thumb-1920-914289.jpg');">
+					<div class="slide__inner">
+						<h2 class="inner__suptitle">Creative Template</h2>
+						<h1 class="inner__title">Welcome to MoGo</h1>
+						<a href="" class="inner__button">Learn More</a>
+					</div>
+				</li>
+				<li class="slide_item" style="background-image: url('https://storge.pic2.me/c/1360x800/414/58603d7ec53b6.jpg');">
+					<div class="slide__inner">
+						<h2 class="inner__suptitle">Creative Template</h2>
+						<h1 class="inner__title">Welcome to MoGo</h1>
+						<a href="" class="inner__button">Learn More</a>
+					</div>
+				</li>
+			</ul>
 
-	        	<div class="slider_item">
-	        		<img src="https://images8.alphacoders.com/914/thumb-1920-914289.jpg" alt="В вашем браузере данный формат картинок не поддерживается">
-	        		<div class="intro__inner">
-			            <h2 class="intro__suptitle">Creative Template</h2>
-			            <h1 class="intro__title">Welcome to MoGo</h1>
-			            <a class="btn" href="#">Learn More</a>
-			        </div>
-	        	</div>
-
-	        	<div class="slider_item back">
-	        		<img src="https://storge.pic2.me/c/1360x800/414/58603d7ec53b6.jpg" alt="В вашем браузере данный формат картинок не поддерживается">
-	        		<div class="intro__inner">
-			            <h2 class="intro__suptitle">Creative Template</h2>
-			            <h1 class="intro__title">Welcome to MoGo</h1>
-			            <a class="btn" href="#">Learn More</a>
-			        </div>
-	        	</div>
-
-
-	        	<div class="slider_nav">
-			        <div class="container">
-			            <div class="slider_nav__inner" id="slider_nav-bar">
-			                <div class="slider_progress_item_1 active" onclick="showSlide(0)">
-			                	<div class="timer_progress" style="width: 0%"></div>
-			                    <span class="slider__num">01</span>
-			                    <span class="slider__text">Intro</span>
-			                </div>
-			                <div class="slider_progress_item_2" onclick="showSlide(1)">
-			                	<div class="timer_progress" style="width: 0%"></div>
-			                    <span class="slider__num">02</span>
-			                    <span class="slider__text">Work</span>
-			                </div>
-			                <div class="slider_progress_item_3" onclick="showSlide(2)">
-			                	<div class="timer_progress" style="width: 0%"></div>
-			                    <span class="slider__num">03</span>
-			                    <span class="slider__text">About</span>
-			                </div>
-			                <div class="slider_progress_item_4" onclick="showSlide(3)">
-			                	<div class="timer_progress" style="width: 0%"></div>
-			                    <span class="slider__num">04</span>
-			                    <span class="slider__text">Contacts</span>
-			                </div>
-			            </div>
-			        </div>
-			    </div> <!-- /.slider_progress -->
-
-	        </div> <!-- /.slider -->
-	    </div>
-	</div><!-- /.intro -->
+			<div class="slider_nav" id="top_slider_nav">
+		        <div class="container">
+		            <div class="slider_nav__inner">
+		                <div class="slNav__item" onclick="showSlide(top_sliderLst, 1)">
+		                	<div class="timer_progress" style="width: 0%"></div>
+		                    <span class="slider__num">01</span>
+		                    <span class="slider__text">Intro</span>
+		                </div>
+		                <div class="slNav__item" onclick="showSlide(top_sliderLst, 2)">
+		                	<div class="timer_progress" style="width: 0%"></div>
+		                    <span class="slider__num">02</span>
+		                    <span class="slider__text">Work</span>
+		                </div>
+		                <div class="slNav__item" onclick="showSlide(top_sliderLst, 3)">
+		                	<div class="timer_progress" style="width: 0%"></div>
+		                    <span class="slider__num">03</span>
+		                    <span class="slider__text">About</span>
+		                </div>
+		                <div class="slNav__item" onclick="showSlide(top_sliderLst, 4)">
+		                	<div class="timer_progress" style="width: 0%"></div>
+		                    <span class="slider__num">04</span>
+		                    <span class="slider__text">Contacts</span>
+		                </div>
+		            </div>
+		        </div>
+		    </div> <!-- /.slider_nav -->
+		</div>
+	</div>
 
 	<!-- Banner "about us" -->
 	<div class="about_us">
@@ -925,12 +918,12 @@
 	<!-- Preloader script -->
 	<script>
 		let 
-		  images = document.images,
-		  images_count = images.length,
-		  images_loaded_count = 0,
-		  preloader = document.getElementById('preloader'),
-		  loadbar = document.getElementById('load_done'),
-		  perc_display = document.getElementById('preload_perc');
+		  images 				= document.images,
+		  images_count 			= images.length,
+		  images_loaded_count 	= 0,
+		  preloader 			= document.getElementById('preloader'),
+		  loadbar 				= document.getElementById('load_done'),
+		  perc_display 			= document.getElementById('preload_perc');
 
 		for (let i = images_loaded_count; i < images_count; i++) {
 		  image_clone = new Image()
@@ -950,13 +943,13 @@
 		      if (!preloader.classList.contains('hide')) {
 		        preloader.classList.add('hide');
 		      }
-		      sliderTimer();
+		      document.addEventListener('DOMContentLoaded', sliderTimer(top_sliderLst, 0));
 		    }, 300)
 		  }
 		}
 	</script>
-<!-- 
-	<script>
+
+<!-- 	<script>
 		let
 		  el = document.querySelectorAll('body > div'),
 		  count_el = el.length,
