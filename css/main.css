@@ -1345,11 +1345,11 @@ footer .sup__title {
 /* ultra laptop adoptation */
 @media (max-width: 1230px) {
 	/* intro */
-	.intro__suptitle {
+	.inner__suptitle {
         font-size: 52px;
     }
 
-    .intro__title {
+    .inner__title {
         font-size: 120px;
     }
 
@@ -1434,11 +1434,11 @@ footer .sup__title {
 
 @media (max-width: 990px) {
 	/* Intro */
-    .intro__suptitle {
+    .inner__suptitle {
         font-size: 32px;
     }
 
-    .intro__title {
+    .inner__title {
         font-size: 80px;
     }
 
@@ -1540,11 +1540,11 @@ footer .sup__title {
 	}
 
     /* Intro */
-    .intro__suptitle {
+    .inner__suptitle {
         font-size: 22px;
     }
 
-    .intro__title {
+    .inner__title {
         font-size: 40px;
     }
 
