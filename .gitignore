@@ -1,4 +1,4 @@
-gulpfile.js
-*.json
-node_modules/, slick/
-test.html
+.DS_Store
+source/
+*.html
+!index.html
