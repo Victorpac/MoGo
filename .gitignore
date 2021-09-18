@@ -1,3 +1,10 @@
+<<<<<<< HEAD
 *.html
 !index.html
 .DS_Store
+=======
+.DS_Store
+source/
+*.html
+!index.html
+>>>>>>> gh-pages

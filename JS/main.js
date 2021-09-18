@@ -30,85 +30,63 @@ function FullScreenPict(id) {
 
 // Slider
 let 
-  top_slider 					= document.querySelectorAll('[class^="slider_item"]'),    // Main slider (in top banner of site)
-  quote_slider				= document.getElementsByClassName('quote')[0].getElementsByClassName('quote_item'),  			// Slider in class quote
-  tstmn_slider        = document.getElementsByClassName('testimonial')[0].getElementsByClassName('quote_item'),  // Slider in class testimonial
-  slider_nav 					= document.querySelectorAll('[class^="slider_progress"]'), // Navigation panel for top slider
-  delay 							= 7;					// lead time (time / 1000)
+	top_sliderLst				= document.getElementById('top_slider'),
+	top_sliNav 					= document.getElementById('top_slider_nav'),
+	windowWidth 				= window.screen.width;
 
 
-function sliderTimer(slides=top_slider) {
+function showSlide(slider, offset=0) {
+	clearTimeout(window.timerId);
+	let 
+		vp 					= slider.parentElement,
+		slItem_count 		= slider.childElementCount,
+		slideNow 			= Math.abs(Math.floor((-slider.offsetLeft / (slider.offsetWidth/slItem_count))));
+
+	if (offset == 0) {
+		if (slideNow >= slItem_count-1) {
+			slider.style.left = '0px';
+			sliderTimer(slider, 0);
+		}else {
+			slider.style.left = '-' + vp.offsetWidth*(slideNow+1) + 'px';
+			sliderTimer(slider, slideNow+1);
+		}
+	}else if (offset == -1) {
+		if (slideNow <= 0) {
+			slider.style.left = '-' + (vp.offsetWidth*(slItem_count-1)) + 'px';
+			sliderTimer(slider, slItem_count-1);
+		}else {
+			slider.style.left = '-' + (vp.offsetWidth*(slideNow-1)) + 'px';
+			sliderTimer(slider, slideNow-1);
+		}
+	}else{
+		slider.style.left = '-' + (vp.offsetWidth*(offset-1)) + 'px';
+		sliderTimer(slider, offset-1);
+	}
+}
+
+function sliderTimer(slider, slideNow, delay=100) {
 	let timer_count = 0;
-
-	// timer progress
-	window.timerId = setTimeout(function timer() {	
-		timer_count++;
-		if (timer_count <= 1000) {
-			if (slides == top_slider) {
-				document.querySelector('[class^="slider_progress_item"].active .timer_progress').style.width = timer_count/10 + '%';
+	if (slider == top_sliderLst) {
+		var nav 			= slider.nextElementSibling,
+			activeTimer 	= nav.getElementsByClassName('slNav__item')[slideNow];
+		// Delet old value
+		for (j of nav.getElementsByClassName('slNav__item')) {
+			j.getElementsByClassName('timer_progress')[0].style.width = '0%';
+		}
+	}	
+	window.timerId = setTimeout(function timer() {
+		if (timer_count <= 100) {
+			timer_count++;
+			if (slider == top_sliderLst) {
+				activeTimer.getElementsByClassName('timer_progress')[0].style.width = timer_count + '%';
 			}
 			window.timerId = setTimeout(timer, delay);
 		}else {
-			for (let i = 0; i < slides.length; i++) {
-				if ( slides[i].classList.contains('next') ) {
-					var slNewActive_id = i;
-					break;
-				}
-			}
-			showSlide(slNewActive_id, slides);
+			showSlide(slider, 0);			
 		}
 	}, delay);
-
-	// remove old value
-	if ( timer_count == 0 ) {
-		slider_nav.forEach(function(item, i, arr) {
-			slider_nav[i].getElementsByClassName('timer_progress')[0].style.width = '0%';
-		});
-	}
 }
 
-
-function showSlide(slide_id, slides=top_slider, dire=0) {
-	if (dire == 0) {
-		clearTimeout(window.timerId);
-		let 
-		  slide_active 			= slides[slide_id],
-		  slide_back 				= (slide_id-1 < 0) ? slides[slides.length-1] : slides[slide_id-1],
-		  slide_next 				= slide_id+1 >= slides.length ? slides[0] : slides[slide_id+1];
-
-		// remove old classes
-	  for (let i = 0; i < slides.length; i++) {
-			slides[i].classList.remove('back', 'active', 'next');
-			slider_nav[i].classList.remove('active');
-		}
-
-		// add new classes
-		slider_nav[slide_id].classList.add('active');
-	  slide_active.classList.add('active');
-		slide_back.classList.add('back');
-		slide_next.classList.add('next');
-
-		sliderTimer(slides);
-	}else { 
-		if (dire == -1) {
-			for (var i = 0; i < slides.length; i++) {
-				if (slides[i].classList.contains('back')) {
-					var newSlideId = i;
-					break;
-				}
-			}
-			showSlide(newSlideId, slides);
-		}else if (dire == 1) {
-			for (var i = 0; i < slides.length; i++) {
-				if (slides[i].classList.contains('next')) {
-					var newSlideId = i;
-					break;
-				}
-			}
-			showSlide(newSlideId, slides);
-		}
-	}
-}
 
 
 
