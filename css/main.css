@@ -239,6 +239,7 @@ img {
 	left: 0;
 	position: relative;
 	overflow: hidden;
+	user-select: none;
 }
 
 	/* Buttons for navigation */

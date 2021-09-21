@@ -1,5 +1,3 @@
-
-
 function addActive(name, id) {
 	i=1
 	while (i<4) {
@@ -65,10 +63,56 @@ function showSlide(slider, offset=0) {
 }
 
 function sliderTimer(slider, slideNow, delay=100) {
+	// Event listening 
+	let 
+		viewPort 	= slider.parentElement,
+		w_width	 	= window.screen.width,
+		isScrol		= false,
+		x22			= 0;
+
+	const l_offset 	= Number(slider.style.left.slice(0, this.length-2));
+
+
+	window.addEventListener('mousedown', e => {
+		x = e.offsetX;
+		isScrol = true;
+	});
+
+	console.log(viewPort);
+
+	window.addEventListener('mousemove', e => {
+		if (isScrol) {
+			x2 = x-e.offsetX;
+			slider.style.left = (l_offset+x2) + 'px';
+		}
+	})
+
+	viewPort.addEventListener('mousemove', e => {
+		console.log('mouse x: ' + e.offsetX, '\nmouse y: ' + e.offsetY);
+	})
+
+	window.addEventListener('mouseup', e => {
+		if (isScrol) {
+			isScrol = false;
+			let perc_offset = (x2/viewPort.offsetWidth)*100;
+			if (perc_offset <= 5 || perc_offset >= -5) {
+				slider.style.left = '-' + (slideNow*viewPort.offsetWidth) + 'px';
+			}else {
+				if (perc_offset >= 5) {
+					showSlide(slider, 0);
+				}else if (perc_offset <= -5) {
+					showSlide(slider, -1);
+				}
+			}
+		}
+	})
+
 	let timer_count = 0;
 	if (slider == top_sliderLst) {
-		var nav 			= slider.nextElementSibling,
-			activeTimer 	= nav.getElementsByClassName('slNav__item')[slideNow];
+		var 
+		  nav 			= slider.nextElementSibling,
+		  activeTimer 	= nav.getElementsByClassName('slNav__item')[slideNow];
+		  
 		// Delet old value
 		for (j of nav.getElementsByClassName('slNav__item')) {
 			j.getElementsByClassName('timer_progress')[0].style.width = '0%';
@@ -86,6 +130,34 @@ function sliderTimer(slider, slideNow, delay=100) {
 		}
 	}, delay);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
