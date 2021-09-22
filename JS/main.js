@@ -33,19 +33,22 @@ let
 	windowWidth 				= window.screen.width;
 
 
-function showSlide(slider, offset=0) {
+function showSlide(slider, offset) {
 	clearTimeout(window.timerId);
 	let 
 		vp 					= slider.parentElement,
 		slItem_count 		= slider.childElementCount,
+		scroll_Now			= vp.scrollLeft,
 		slideNow 			= Math.abs(Math.floor((-slider.offsetLeft / (slider.offsetWidth/slItem_count))));
 
+	console.log(scroll_Now);
+
 	if (offset == 0) {
-		if (slideNow >= slItem_count-1) {
-			slider.style.left = '0px';
+		if (scroll_Now >= slider.offsetWidth) {
+			vp.scrollLeft = 0;
 			sliderTimer(slider, 0);
 		}else {
-			slider.style.left = '-' + vp.offsetWidth*(slideNow+1) + 'px';
+			vp.scrollLeft = scroll_Now+vp.offsetWidth;
 			sliderTimer(slider, slideNow+1);
 		}
 	}else if (offset == -1) {
@@ -66,46 +69,41 @@ function sliderTimer(slider, slideNow, delay=100) {
 	// Event listening 
 	let 
 		viewPort 	= slider.parentElement,
-		w_width	 	= window.screen.width,
-		isScrol		= false,
-		x22			= 0;
+		w_width	 	= window.screen.width;
 
-	const l_offset 	= Number(slider.style.left.slice(0, this.length-2));
+	// window.addEventListener('mousedown', e => {
+	// 	x = e.offsetX;
+	// 	isScrol = true;
+	// });
 
+	// console.log(viewPort);
 
-	window.addEventListener('mousedown', e => {
-		x = e.offsetX;
-		isScrol = true;
-	});
+	// window.addEventListener('mousemove', e => {
+	// 	if (isScrol) {
+	// 		x2 = x-e.offsetX;
+	// 		slider.style.left = (l_offset+x2) + 'px';
+	// 	}
+	// })
 
-	console.log(viewPort);
+	// viewPort.addEventListener('mousemove', e => {
+	// 	console.log('mouse x: ' + e.offsetX, '\nmouse y: ' + e.offsetY);
+	// })
 
-	window.addEventListener('mousemove', e => {
-		if (isScrol) {
-			x2 = x-e.offsetX;
-			slider.style.left = (l_offset+x2) + 'px';
-		}
-	})
-
-	viewPort.addEventListener('mousemove', e => {
-		console.log('mouse x: ' + e.offsetX, '\nmouse y: ' + e.offsetY);
-	})
-
-	window.addEventListener('mouseup', e => {
-		if (isScrol) {
-			isScrol = false;
-			let perc_offset = (x2/viewPort.offsetWidth)*100;
-			if (perc_offset <= 5 || perc_offset >= -5) {
-				slider.style.left = '-' + (slideNow*viewPort.offsetWidth) + 'px';
-			}else {
-				if (perc_offset >= 5) {
-					showSlide(slider, 0);
-				}else if (perc_offset <= -5) {
-					showSlide(slider, -1);
-				}
-			}
-		}
-	})
+	// window.addEventListener('mouseup', e => {
+	// 	if (isScrol) {
+	// 		isScrol = false;
+	// 		let perc_offset = (x2/viewPort.offsetWidth)*100;
+	// 		if (perc_offset <= 5 || perc_offset >= -5) {
+	// 			slider.style.left = '-' + (slideNow*viewPort.offsetWidth) + 'px';
+	// 		}else {
+	// 			if (perc_offset >= 5) {
+	// 				showSlide(slider, 0);
+	// 			}else if (perc_offset <= -5) {
+	// 				showSlide(slider, -1);
+	// 			}
+	// 		}
+	// 	}
+	// })
 
 	let timer_count = 0;
 	if (slider == top_sliderLst) {
@@ -126,7 +124,7 @@ function sliderTimer(slider, slideNow, delay=100) {
 			}
 			window.timerId = setTimeout(timer, delay);
 		}else {
-			showSlide(slider, 0);			
+			// showSlide(slider, 0);			
 		}
 	}, delay);
 }
