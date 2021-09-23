@@ -228,6 +228,15 @@ img {
 }
 
 /* Slider */
+.slider {
+	user-select: none;
+	touch-action: pan-y;
+}
+
+.slider img {
+	pointer-events: none;
+}
+
 .header_slider {
 	height: 100vh;
 }

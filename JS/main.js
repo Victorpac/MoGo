@@ -68,28 +68,22 @@ function sliderTimer(slider, slideNow, delay=100) {
 		viewPort 	= slider.parentElement,
 		w_width	 	= window.screen.width,
 		isScrol		= false,
-		x22			= 0;
+		x2			= 0;
 
 	const l_offset 	= Number(slider.style.left.slice(0, this.length-2));
 
 
-	window.addEventListener('mousedown', e => {
-		x = e.offsetX;
+	viewPort.addEventListener('mousedown', e => {
+		x = e.clientX;
 		isScrol = true;
 	});
 
-	console.log(viewPort);
-
-	window.addEventListener('mousemove', e => {
-		if (isScrol) {
-			x2 = x-e.offsetX;
-			slider.style.left = (l_offset+x2) + 'px';
-		}
-	})
-
 	viewPort.addEventListener('mousemove', e => {
-		console.log('mouse x: ' + e.offsetX, '\nmouse y: ' + e.offsetY);
-	})
+		if (isScrol) {
+			x2 = x-e.clientX;
+			slider.style.left = (l_offset-x2) + 'px';
+		}
+	});
 
 	window.addEventListener('mouseup', e => {
 		if (isScrol) {
@@ -105,7 +99,7 @@ function sliderTimer(slider, slideNow, delay=100) {
 				}
 			}
 		}
-	})
+	});
 
 	let timer_count = 0;
 	if (slider == top_sliderLst) {
