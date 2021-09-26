@@ -160,10 +160,12 @@
 	<div class="header_slider">
 		<div class="viewport">
 
-			<div id="btn__next" onclick="showSlide(top_sliderLst, 0)"></div>
-			<div id="btn__prev" onclick="showSlide(top_sliderLst, -1)"></div>
+			<div class="arrows">
+				<div id="slider-arrows btn__next" onclick="showSlide(top_sliderLst, 0)"></div>
+				<div id="slider-arrows btn__prev" onclick="showSlide(top_sliderLst, -1)"></div>
+			</div>
 
-			<ul class="slide_list" id="top_slider" style="width: calc(100vw * 4); left: 0;">
+			<ul class="slide_list" id="top_slider" style="width: calc(100vw * 4)">
 				<li class="slide_item" style="background-image: url('media/images/webp/title_banner__bg.webp');">
 					<div class="slide__inner">
 						<h2 class="inner__suptitle">Creative Template</h2>
@@ -944,7 +946,7 @@
 		      if (!preloader.classList.contains('hide')) {
 		        preloader.classList.add('hide');
 		      }
-		      document.addEventListener('DOMContentLoaded', sliderTimer(top_sliderLst, 0));
+		      // document.addEventListener('DOMContentLoaded', sliderTimer(top_sliderLst, 0));
 		    }, 300)
 		  }
 		}
