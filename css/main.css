@@ -261,6 +261,8 @@ img {
 	left: 0;
 	top: 0;
 	transition: left 1s ease-in-out;
+	will-change: left;
+	user-select: none;
 }
 
 .slide_item {
