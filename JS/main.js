@@ -307,30 +307,3 @@ let slider = document.querySelector('.header_slider'),
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

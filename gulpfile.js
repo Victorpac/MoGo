@@ -11,5 +11,16 @@ gulp.task('default', function () {
 		.pipe(rename({
 		    suffix: ".min"
 		  }))
+<<<<<<< HEAD
 		.pipe(gulp.dest('./css/'));
+=======
+		.pipe(gulp.dest('./css/'))
+		.pipe(livereload());
+});
+
+
+gulp.task('default', function () {
+	livereload.listen();
+	gulp.watch(['./css/main.css'], gulp.series('action'));
+>>>>>>> origin/gh-pages
 });
