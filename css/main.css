@@ -228,6 +228,15 @@ img {
 }
 
 /* Slider */
+.slider {
+	user-select: none;
+	touch-action: pan-y;
+}
+
+.slider img {
+	pointer-events: none;
+}
+
 .header_slider {
 	height: 100vh;
 }
@@ -239,6 +248,7 @@ img {
 	left: 0;
 	position: relative;
 	overflow: hidden;
+	user-select: none;
 }
 
 	/* Buttons for navigation */
@@ -258,11 +268,11 @@ img {
 	display: flex;
 	flex-direction: row;
 	position: absolute;
-	left: 0;
+	transform: translate3d(0px, 0px, 0px);
 	top: 0;
-	transition: left 1s ease-in-out;
-	will-change: left;
-	user-select: none;
+	left: 0;
+	transition: transform 1s ease-in-out;
+	will-change: transform;
 }
 
 .slide_item {
