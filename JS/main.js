@@ -67,7 +67,7 @@ let slider = document.querySelector('.header_slider'),
     nextTrf = 0,
     prevTrf = 0,
     lastTrf = --slides.length * slideWidth,
-    posThreshold = slides[0].offsetWidth * 0.35,
+    posThreshold = slides[0].offsetWidth * 0.1,
     trfRegExp = /([-0-9.]+(?=px))/,
     getEvent = function() {
       return (event.type.search('touch') !== -1) ? event.touches[0] : event;
