@@ -1,4 +1,7 @@
 .DS_Store
+<<<<<<< HEAD
 source/
 *.html
 !index.html
+=======
+>>>>>>> 3f6b9107ab4e43ff89df348df43b7e6c1dbcb24e
