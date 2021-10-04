@@ -27,24 +27,6 @@ function FullScreenPict(id) {
 
 
 // Slider
-// let 
-// 	top_slider 			= document.getElementById('top_slider'),
-// 	top_sliNav			= document.getElementById('top_slider_nav'),
-// 	trfRegExp 			= /[-0-9.]+(?=px)/,
-
-
-// function sliderManag(sliderList) {
-// 	let 
-// 		vp 				= sliderList.perentElement,
-// 		posInit 		= 0,
-// 		posX1			= 0,
-// 		posX2			= 0,
-// 		posFinal		= 0,
-// 		isSwipe			= false,
-
-// }
-
-
 let slider = document.querySelector('.header_slider'),
     sliderList = slider.querySelector('.viewport'),
     sliderTrack = slider.querySelector('.slide_list'),
@@ -67,12 +49,16 @@ let slider = document.querySelector('.header_slider'),
     nextTrf = 0,
     prevTrf = 0,
     lastTrf = --slides.length * slideWidth,
-    posThreshold = slides[0].offsetWidth * 0.35,
-    trfRegExp = /([-0-9.]+(?=px))/,
-    getEvent = function() {
+    posThreshold = 0.01,
+    trfRegExp = /([-0-9.]+(?=px))/;
+
+
+    function getEvent() {
       return (event.type.search('touch') !== -1) ? event.touches[0] : event;
-    },
-    slide = function() {
+    };
+    
+
+    function slide() {
       if (transition) {
         sliderTrack.style.transition = 'transform .5s';
       }
@@ -80,8 +66,10 @@ let slider = document.querySelector('.header_slider'),
 
       prev.classList.toggle('disabled', slideIndex === 0);
       next.classList.toggle('disabled', slideIndex === --slides.length);
-    },
-    swipeStart = function() {
+    };
+
+
+    function swipeStart() {
       let evt = getEvent();
 
       if (allowSwipe) {
@@ -99,8 +87,10 @@ let slider = document.querySelector('.header_slider'),
         sliderList.classList.remove('grab');
         sliderList.classList.add('grabbing');
       }
-    },
-    swipeAction = function() {
+    };
+
+
+    function swipeAction() {
       let evt = getEvent(),
         style = sliderTrack.style.transform,
         transform = +style.match(trfRegExp)[0];
@@ -151,8 +141,10 @@ let slider = document.querySelector('.header_slider'),
         sliderTrack.style.transform = `translate3d(${transform - posX2}px, 0px, 0px)`;
       }
 
-    },
-    swipeEnd = function() {
+    };
+
+
+     function swipeEnd() {
       posFinal = posInit - posX1;
 
       isScroll = false;
@@ -167,7 +159,7 @@ let slider = document.querySelector('.header_slider'),
       sliderList.classList.remove('grabbing');
 
       if (allowSwipe) {
-        if (Math.abs(posFinal) > posThreshold) {
+        if (Math.abs(posFinal) > (slideWidth*posThreshold) ) {
           if (posInit < posX1) {
             slideIndex--;
           } else if (posInit > posX1) {
@@ -186,16 +178,20 @@ let slider = document.querySelector('.header_slider'),
         allowSwipe = true;
       }
 
-    },
-    setTransform = function(transform, comapreTransform) {
+    };
+
+
+    function setTransform(transform, comapreTransform) {
       if (transform >= comapreTransform) {
         if (transform > comapreTransform) {
           sliderTrack.style.transform = `translate3d(${comapreTransform}px, 0px, 0px)`;
         }
       }
       allowSwipe = false;
-    },
-    reachEdge = function() {
+    };
+
+
+    function reachEdge() {
       transition = false;
       swipeEnd();
       allowSwipe = true;
