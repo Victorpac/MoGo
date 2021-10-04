@@ -26,25 +26,6 @@ function FullScreenPict(id) {
 }
 
 
-// Slider
-// let 
-// 	top_slider 			= document.getElementById('top_slider'),
-// 	top_sliNav			= document.getElementById('top_slider_nav'),
-// 	trfRegExp 			= /[-0-9.]+(?=px)/,
-
-
-// function sliderManag(sliderList) {
-// 	let 
-// 		vp 				= sliderList.perentElement,
-// 		posInit 		= 0,
-// 		posX1			= 0,
-// 		posX2			= 0,
-// 		posFinal		= 0,
-// 		isSwipe			= false,
-
-// }
-
-
 let slider = document.querySelector('.header_slider'),
     sliderList = slider.querySelector('.viewport'),
     sliderTrack = slider.querySelector('.slide_list'),
