@@ -17,7 +17,7 @@
 
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
-	<title>MoGo</title>
+	<title>test</title>
 </head>
 <body>
 
@@ -158,13 +158,18 @@
 	</header>
 
 	<!-- Slider -->
-	<div class="header_slider">
+	<section class="header_slider" id="header_slider">
 		<div class="viewport">
 
+<<<<<<< HEAD
 			<div class="arrows">
 				<div id="slider-arrows btn__next" onclick="showSlide(top_sliderLst, 0)"></div>
 				<div id="slider-arrows btn__prev" onclick="showSlide(top_sliderLst, -1)"></div>
 			</div>
+=======
+			<div class="btn__next_slide"></div>
+			<div class="btn__prev_slide"></div>
+>>>>>>> slt2
 
 			<ul class="slide_list" id="top_slider" style="width: calc(100vw * 4)">
 				<li class="slide_item" style="background-image: url('media/images/webp/title_banner__bg.webp');">
@@ -200,22 +205,22 @@
 			<div class="slider_nav" id="top_slider_nav">
 		        <div class="container">
 		            <div class="slider_nav__inner">
-		                <div class="slNav__item" onclick="showSlide(top_sliderLst, 1)">
+		                <div class="slNav__item slider_nav_item" data-slide-id="0">
 		                	<div class="timer_progress" style="width: 0%"></div>
 		                    <span class="slider__num">01</span>
 		                    <span class="slider__text">Intro</span>
 		                </div>
-		                <div class="slNav__item" onclick="showSlide(top_sliderLst, 2)">
+		                <div class="slNav__item slider_nav_item" data-slide-id="1">
 		                	<div class="timer_progress" style="width: 0%"></div>
 		                    <span class="slider__num">02</span>
 		                    <span class="slider__text">Work</span>
 		                </div>
-		                <div class="slNav__item" onclick="showSlide(top_sliderLst, 3)">
+		                <div class="slNav__item slider_nav_item" data-slide-id="2">
 		                	<div class="timer_progress" style="width: 0%"></div>
 		                    <span class="slider__num">03</span>
 		                    <span class="slider__text">About</span>
 		                </div>
-		                <div class="slNav__item" onclick="showSlide(top_sliderLst, 4)">
+		                <div class="slNav__item slider_nav_item" data-slide-id="3">
 		                	<div class="timer_progress" style="width: 0%"></div>
 		                    <span class="slider__num">04</span>
 		                    <span class="slider__text">Contacts</span>
@@ -224,7 +229,7 @@
 		        </div>
 		    </div> <!-- /.slider_nav -->
 		</div>
-	</div>
+	</section>
 
 	<!-- Banner "about us" -->
 	<div class="about_us">
@@ -922,12 +927,12 @@
 	<!-- Preloader script -->
 	<script>
 		let 
-		  images 				= document.images,
-		  images_count 			= images.length,
-		  images_loaded_count 	= 0,
-		  preloader 			= document.getElementById('preloader'),
-		  loadbar 				= document.getElementById('load_done'),
-		  perc_display 			= document.getElementById('preload_perc');
+		  images 							= document.images,
+		  images_count 				= images.length,
+		  images_loaded_count = 0,
+		  preloader 					= document.getElementById('preloader'),
+		  loadbar 						= document.getElementById('load_done'),
+		  perc_display 				= document.getElementById('preload_perc');
 
 		for (let i = images_loaded_count; i < images_count; i++) {
 		  image_clone = new Image()
