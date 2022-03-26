@@ -303,8 +303,14 @@ img {
 	position: absolute;
 	transform: translate3d(0px, 0px, 0px);
 	top: 0;
+<<<<<<< HEAD
+	left: 0;
+	transition: transform 1s ease-in-out;
+	will-change: transform;
+=======
 	transform: translate3d(-00.00vw, 0, 0);
 	transition: transform 1s ease-in-out;
+>>>>>>> slt2
 }
 
 .slide_item {
