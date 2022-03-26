@@ -304,7 +304,8 @@ img {
 	transform: translate3d(0px, 0px, 0px);
 	top: 0;
 	transform: translate3d(-00.00vw, 0, 0);
-	transition: transform 1s ease-in-out;
+	transition: transform ease-in-out;
+	transition-duration: 1s;
 }
 
 .slide_item {

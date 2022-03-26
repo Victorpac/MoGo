@@ -97,6 +97,8 @@ class Slider {
 		// Swiper
 		this.viewport.addEventListener('pointerdown', (e) => this.swipeStart(e));
 
+		// this.viewport.addEventListener('click', () => this.carousel.style.transitionDuration = '1s');
+
 		// Events for navigation menu
 		for (let el of this.navMenu) {
 			el.addEventListener('click', () => this.showSlide(-el.dataset.slideId));
@@ -109,14 +111,15 @@ class Slider {
 		let slider_offset = this.currentSlide*100;
 
 		this.timerPause();
-		this.carousel.style.transition = "unset";
 		
 		this.viewport.addEventListener('pointerup', this.swiperPointerUp = () => {
 			if (Math.abs(this.offset) > 30) {
-				if (this.offset < 0) {
+				if ((this.offset < 0) && (this.currentSlide > -(this.carousel.children.length-1))) {
 					this.showSlide(this.currentSlide-1);
-				}else {
+				}else if ((this.offset > 0) && (this.currentSlide < 0)) {
 					this.showSlide(this.currentSlide+1);
+				}else {
+					this.carousel.style.transform = `translate3d(${this.currentSlide * 100}vw, 0, 0)`;
 				}
 				this.offset = undefined;
 			}else {
@@ -125,11 +128,13 @@ class Slider {
 			
 			this.viewport.removeEventListener('pointermove', this.swiperPointerMove);
 			this.viewport.removeEventListener('pointerup', this.swiperPointerUp);
-			this.carousel.transition = 'transform 1s ease-in-out';
+			this.carousel.style.transitionDuration = '.5s';
+			setTimeout(() => this.carousel.style.transitionDuration = 'unset', 500);
 			this.timerPlay();
 		});
 
 		this.viewport.addEventListener('pointermove', this.swiperPointerMove = (e) => {
+			this.carousel.style.transitionDuration = "0s";
 			this.offset = ((e.clientX - start_pos) / window.innerWidth) * 100;
 			this.carousel.style.transform = `translate3d(${(slider_offset + this.offset)}vw, 0vw, 0vw)`;
 		});
