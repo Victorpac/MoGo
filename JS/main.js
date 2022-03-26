@@ -1,3 +1,5 @@
+"use strict";
+
 function addActive(name, id) {
 	i=1
 	while (i<4) {
@@ -27,108 +29,160 @@ function FullScreenPict(id) {
 
 
 // Slider
-let 
-	top_sliderLst				= document.getElementById('top_slider'),
-	top_sliNav 					= document.getElementById('top_slider_nav'),
-	windowWidth 				= window.screen.width;
+class Slider {
+	constructor(parrams) {
+		this.slider 				= document.querySelector('#' + parrams.slider_id);
+
+		this.viewport 			= document.querySelector(`#${parrams.slider_id} .${parrams.viewport}`);
+		this.carousel 			= document.querySelector(`#${parrams.slider_id} .${parrams.carousel}`);
+		this.navMenu 				= document.querySelectorAll(`#${parrams.slider_id} .${parrams.navMenu} .slider_nav_item`);
+		this.navButtonNext 	= document.querySelector(`#${parrams.slider_id} .${parrams.next}`);
+		this.navButtonPrev 	= document.querySelector(`#${parrams.slider_id} .${parrams.prev}`);
+		this.currentSlide		= parrams.currentSlide || 0;
+
+		// Start slider
+		this.start();
+	}
 
 
-function showSlide(slider, offset) {
-	clearTimeout(window.timerId);
-	let 
-		vp 					= slider.parentElement,
-		slItem_count 		= slider.childElementCount,
-		scroll_Now			= vp.scrollLeft,
-		slideNow 			= Math.abs(Math.floor((-slider.offsetLeft / (slider.offsetWidth/slItem_count))));
-
-	console.log(scroll_Now);
-
-	if (offset == 0) {
-		if (scroll_Now >= slider.offsetWidth) {
-			vp.scrollLeft = 0;
-			sliderTimer(slider, 0);
-		}else {
-			vp.scrollLeft = scroll_Now+vp.offsetWidth;
-			sliderTimer(slider, slideNow+1);
+	start() {
+		// Removing extra nav-arrows
+		if (this.currentSlide >= 0) {
+			this.navButtonPrev.style.display = 'none';
 		}
-	}else if (offset == -1) {
-		if (slideNow <= 0) {
-			slider.style.left = '-' + (vp.offsetWidth*(slItem_count-1)) + 'px';
-			sliderTimer(slider, slItem_count-1);
-		}else {
-			slider.style.left = '-' + (vp.offsetWidth*(slideNow-1)) + 'px';
-			sliderTimer(slider, slideNow-1);
+		if (this.currentSlide <= -(this.carousel.children.length-1)) {
+			this.navButtonNext.style.display = 'none';
 		}
-	}else{
-		slider.style.left = '-' + (vp.offsetWidth*(offset-1)) + 'px';
-		sliderTimer(slider, offset-1);
+
+		this.startListening();
+		this.timerStart();
+	}
+
+
+	showSlide(slide_id) {		
+		if (slide_id <= -(this.carousel.children.length-1)) {
+			this.navButtonNext.style.display = 'none';
+
+			if (slide_id < -(this.carousel.children.length-1)) {
+				this.showSlide(0);
+				return;
+			}
+		} else if (slide_id >= 0) {
+			this.navButtonPrev.style.display = 'none';
+			
+			if (slide_id > 0) {
+				this.showSlide(-(this.carousel.children.length-1));
+				return;
+			}
+		} else {
+			this.navButtonNext.style.display = '';
+			this.navButtonPrev.style.display = '';
+		}
+		this.carousel.style.transform = `translate3d(${slide_id * 100}vw, 0, 0)`;
+		this.currentSlide = slide_id;
+		this.timerClear();
+		this.timerStart();
+	}
+
+
+	startListening() {
+		// Events for navigration buttons
+		this.navButtonNext.addEventListener('click', () => {
+			this.showSlide(this.currentSlide-1);
+		});
+		this.navButtonPrev.addEventListener('click', () => {
+			this.showSlide(this.currentSlide+1);
+		});
+		
+		// Swiper
+		this.viewport.addEventListener('pointerdown', (e) => this.swipeStart(e));
+
+		// Events for navigation menu
+		for (let el of this.navMenu) {
+			el.addEventListener('click', () => this.showSlide(-el.dataset.slideId));
+		}
+	}
+
+
+	swipeStart(event) {
+		let start_pos = event.clientX;
+		let slider_offset = this.currentSlide*100;
+
+		this.timerPause();
+		this.carousel.style.transition = "unset";
+		
+		this.viewport.addEventListener('pointerup', this.swiperPointerUp = () => {
+			if (Math.abs(this.offset) > 30) {
+				if (this.offset < 0) {
+					this.showSlide(this.currentSlide-1);
+				}else {
+					this.showSlide(this.currentSlide+1);
+				}
+				this.offset = undefined;
+			}else {
+				this.carousel.style.transform = `translate3d(${this.currentSlide * 100}vw, 0, 0)`;
+			}
+			
+			this.viewport.removeEventListener('pointermove', this.swiperPointerMove);
+			this.viewport.removeEventListener('pointerup', this.swiperPointerUp);
+			this.carousel.transition = 'transform 1s ease-in-out';
+			this.timerPlay();
+		});
+
+		this.viewport.addEventListener('pointermove', this.swiperPointerMove = (e) => {
+			this.offset = ((e.clientX - start_pos) / window.innerWidth) * 100;
+			this.carousel.style.transform = `translate3d(${(slider_offset + this.offset)}vw, 0vw, 0vw)`;
+		});
+	}
+
+
+	timerStart(time=7000) {
+		let navigation_element = this.navMenu[Math.abs(this.currentSlide)];
+		this.timer_progress = navigation_element.querySelector('.timer_progress');
+
+		let i = 0;
+		this.timer = setInterval(() => {
+			if (!this.timerIsPaused) {
+				if (i >= 100) {
+					this.timerClear();
+					this.showSlide(this.currentSlide-1);
+				}else {
+					this.timer_progress.style.width = `${i}%`;
+					i++;
+				}
+			}
+		}, time/100)
+	}
+
+
+	timerPause() {
+		this.timerIsPaused = true;
+	}
+
+
+	timerPlay() {
+		this.timerIsPaused = false;
+	}
+
+
+	timerClear() {
+		clearInterval(this.timer);
+		this.timer_progress.style.width = "0%";
 	}
 }
 
-function sliderTimer(slider, slideNow, delay=100) {
-	// Event listening 
-	let 
-		viewPort 	= slider.parentElement,
-		w_width	 	= window.screen.width;
 
-	// window.addEventListener('mousedown', e => {
-	// 	x = e.offsetX;
-	// 	isScrol = true;
-	// });
-
-	// console.log(viewPort);
-
-	// window.addEventListener('mousemove', e => {
-	// 	if (isScrol) {
-	// 		x2 = x-e.offsetX;
-	// 		slider.style.left = (l_offset+x2) + 'px';
-	// 	}
-	// })
-
-	// viewPort.addEventListener('mousemove', e => {
-	// 	console.log('mouse x: ' + e.offsetX, '\nmouse y: ' + e.offsetY);
-	// })
-
-	// window.addEventListener('mouseup', e => {
-	// 	if (isScrol) {
-	// 		isScrol = false;
-	// 		let perc_offset = (x2/viewPort.offsetWidth)*100;
-	// 		if (perc_offset <= 5 || perc_offset >= -5) {
-	// 			slider.style.left = '-' + (slideNow*viewPort.offsetWidth) + 'px';
-	// 		}else {
-	// 			if (perc_offset >= 5) {
-	// 				showSlide(slider, 0);
-	// 			}else if (perc_offset <= -5) {
-	// 				showSlide(slider, -1);
-	// 			}
-	// 		}
-	// 	}
-	// })
-
-	let timer_count = 0;
-	if (slider == top_sliderLst) {
-		var 
-		  nav 			= slider.nextElementSibling,
-		  activeTimer 	= nav.getElementsByClassName('slNav__item')[slideNow];
-		  
-		// Delet old value
-		for (j of nav.getElementsByClassName('slNav__item')) {
-			j.getElementsByClassName('timer_progress')[0].style.width = '0%';
-		}
-	}	
-	window.timerId = setTimeout(function timer() {
-		if (timer_count <= 100) {
-			timer_count++;
-			if (slider == top_sliderLst) {
-				activeTimer.getElementsByClassName('timer_progress')[0].style.width = timer_count + '%';
-			}
-			window.timerId = setTimeout(timer, delay);
-		}else {
-			// showSlide(slider, 0);			
-		}
-	}, delay);
+// Slider settings
+let header_slider_set = {
+	slider_id: 		'header_slider',
+	viewport: 		'viewport',
+	carousel: 		'slide_list',
+	navMenu:			'slider_nav',
+	next:					'btn__next_slide',
+	prev:					'btn__prev_slide'
 }
 
+let slider = new Slider(header_slider_set);
 
 
 
