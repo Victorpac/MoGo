@@ -142,6 +142,10 @@
     	display: none;
     }
 
+    .btn__next_slide, .btn__prev_slide {
+        display: none;
+    }
+
 
     /* Service (2) */
     .service__inner > img{
