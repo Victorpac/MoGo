@@ -228,9 +228,6 @@ img {
 }
 
 
-
-
-
 /* Slider */
 .slider {
 	user-select: none;
@@ -253,6 +250,7 @@ img {
 	position: relative;
 	overflow: hidden;
 	user-select: none;
+	touch-action: none;
 }
 
 	/* Buttons for navigation */
