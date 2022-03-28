@@ -49,4 +49,3 @@ function media_css() {
 gulp.task('default', function () {
 	return media_css(), main_css();
 });
-	
