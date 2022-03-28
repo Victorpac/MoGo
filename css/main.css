@@ -250,7 +250,7 @@ img {
 	position: relative;
 	overflow: hidden;
 	user-select: none;
-	touch-action: none;
+	touch-action: pan-y;
 }
 
 	/* Buttons for navigation */
