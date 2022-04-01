@@ -187,4 +187,7 @@ let header_slider_set = {
 	prev:					'btn__prev_slide'
 }
 
-let slider = new Slider(header_slider_set);
+
+document.addEventListener('DOMContentLoaded', () => {
+	let slider_top = new Slider(header_slider_set);
+});
