@@ -108,6 +108,7 @@
 		<div class="preload_percent" id="preload_perc">0%</div>
 	</div>
 
+
 	<!-- Top navigation menu -->
 	<header class="header">
 	    <div class="container">
@@ -922,28 +923,30 @@
 	<!-- Preloader script -->
 	<script>
 		let 
-		  images 							= document.images,
-		  images_count 				= images.length,
-		  images_loaded_count = 0,
-		  preloader 					= document.getElementById('preloader'),
-		  loadbar 						= document.getElementById('load_done'),
-		  perc_display 				= document.getElementById('preload_perc'),
-			page_is_loaded 			= new Event('ContentLoaded');
-
-		for (let i = images_loaded_count; i < images_count; i++) {
-		  image_clone = new Image()
+			images_loaded_count 	= 0,
+		  images 								= document.images,
+		  bg_images 						= document.querySelectorAll('[style*=background-image]'),
+		  preloader 						= document.getElementById('preloader'),
+		  loadbar 							= document.getElementById('load_done'),
+		  perc_display 					= document.getElementById('preload_perc'),
+			images_total_count	 	= images.length + bg_images.length,
+			page_is_loaded 				= new Event('ContentLoaded');
+			
+		
+		for (let i = images_loaded_count; i < images_total_count; i++) {
+		  image_clone = new Image();
 		  image_clone.onload = image_loaded;
 		  image_clone.onerror = image_loaded;
-		  image_clone.src = images[i].src;
+			image_clone.src = images[i]?.src || bg_images[images_total_count-i-1].style.backgroundImage.replace('url("', '').replace('")', '');
 		}
 
 		function image_loaded() {
 		  images_loaded_count++;
-		  let load_percent = (( (100 / images_count) * images_loaded_count ) << 0) + "%";
+		  let load_percent = (( (100 / images_total_count) * images_loaded_count ) << 0) + "%";
 		  perc_display.innerText = load_percent;
 		  loadbar.style.width = load_percent;
 		  
-		  if (images_loaded_count >= images_count) {
+		  if (images_loaded_count >= images_total_count) {
 		    setTimeout(function () {
 		      if (!preloader.classList.contains('hide')) {
 		        preloader.classList.add('hide');
