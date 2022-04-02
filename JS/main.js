@@ -188,7 +188,6 @@ let header_slider_set = {
 }
 
 
-document.addEventListener('DOMContentLoaded', () => {
-	console.log('is Loaded');
+document.addEventListener('ContentLoaded', () => {
 	let slider_top = new Slider(header_slider_set);
 });

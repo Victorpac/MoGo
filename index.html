@@ -108,6 +108,7 @@
 		<div class="preload_percent" id="preload_perc">0%</div>
 	</div>
 
+	<!-- Top navigation menu -->
 	<header class="header">
 	    <div class="container">
 	        <div class="header__inner">
@@ -926,7 +927,8 @@
 		  images_loaded_count = 0,
 		  preloader 					= document.getElementById('preloader'),
 		  loadbar 						= document.getElementById('load_done'),
-		  perc_display 				= document.getElementById('preload_perc');
+		  perc_display 				= document.getElementById('preload_perc'),
+			page_is_loaded 			= new Event('ContentLoaded');
 
 		for (let i = images_loaded_count; i < images_count; i++) {
 		  image_clone = new Image()
@@ -946,6 +948,7 @@
 		      if (!preloader.classList.contains('hide')) {
 		        preloader.classList.add('hide');
 		      }
+					document.dispatchEvent(page_is_loaded);
 		    }, 300)
 		  }
 		}
