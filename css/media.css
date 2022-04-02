@@ -126,6 +126,7 @@
     }
 }
 
+/* Mobile */
 @media (max-width: 770px) {
 	/* Nav */
     .nav {
@@ -144,6 +145,21 @@
 
     .btn__next_slide, .btn__prev_slide {
         display: none;
+    }
+
+    /* About us */
+    .slide, .slide .pict {
+        background: unset;
+    }
+    .slide:hover .pict {
+        transform: unset;
+	    transition: unset;
+    }
+    .slide:hover .pict__inner {
+        display: none;
+    }
+    .slide:hover .pict__img {
+        opacity: 1;
     }
 
 

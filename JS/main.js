@@ -10,11 +10,12 @@ function addActive(name, id) {
 }
 
 function openMenu() {
-	a = document.getElementById('menu').classList;
-	if (a == 'menu') {
-		a.add('active');
+	console.log('dsfsd');
+	let top_nav_menu = document.querySelector('#menu');
+	if (top_nav_menu.classList.contains('active')) {
+		top_nav_menu.classList.remove('active');
 	}else {
-		a.remove('active');
+		top_nav_menu.classList.add('active');
 	}
 }
 

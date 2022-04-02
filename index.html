@@ -7,8 +7,6 @@
 	<!-- Connect style -->
 	<link rel="preload" as="style" type="text/css" href="css/main.min.css" onload="this.onload=null;this.rel='stylesheet'">
 	<link rel="preload" as="style" type="text/css" href="css/media.min.css" onload="this.onload=null;this.rel='stylesheet'">
-	<!-- <link rel="stylesheet" href="css/main.css"> -->
-	
 
 
 	<!-- Connect fonts -->
@@ -17,14 +15,14 @@
 	<link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
 	<!-- Preload stylesheet -->
-	<style>
+<style>
 		/* fonts */
 		.fa,.fab,.fal,.far,.fas {
 			-moz-osx-font-smoothing: grayscale;
 			-webkit-font-smoothing: antialiased;
 			display: inline-block;
 			font-style: normal;
-			font-variant: normal;
+ 			font-variant: normal;
 			text-rendering: auto;
 			line-height: 1
 		}
@@ -140,10 +138,10 @@
 	<header class="header">
 	    <div class="container">
 	        <div class="header__inner">
-	            <div class="header__logo">MoGo</div>
+	            <a class="header__logo">MoGo</a>
 
 	            <nav class="nav">
-	                <a class="nav__link active" href="#">About</a>
+	                <a class="nav__link" href="#">About</a>
 	                <a class="nav__link" href="#">Service</a>
 	                <a class="nav__link" href="#">Blog</a>
 	                <a class="nav__link" href="#">Work</a>
@@ -158,12 +156,18 @@
 
 	            <!-- Drop-dwon menu (mobile version) -->
 	            <div class="menu" id="menu">
-	            	<div class="icon" onclick="openMenu()">
+								<div class="open_menu-icon" onclick="openMenu()">
 	            		<div></div>
 	            		<div></div>
 	            		<div></div>
 	            	</div>
+	            	
 	            	<div class="menu__inner">
+									<div class="close_menu-icon" onclick="openMenu()">
+										<div></div>
+										<div></div>
+										<div></div>
+									</div>
 	            		<div class="search">
 	            			<input type="text" placeholder="Поиск...">
 	            			<a class="icon__search" href="#">
