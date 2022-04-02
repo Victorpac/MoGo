@@ -5,24 +5,45 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- Connect style -->
-	<link rel="stylesheet" type="text/css" href="css/main.min.css">
-	<link rel="stylesheet" type="text/css" href="css/media.min.css">
+	<link rel="preload" as="style" type="text/css" href="css/main.min.css">
+	<link rel="preload" as="style" type="text/css" href="css/media.min.css">
 	<!-- <link rel="stylesheet" href="css/main.css"> -->
 	
 
 
 	<!-- Connect fonts -->
+	<link rel="preload" as="style" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
-
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-
-	<title>MoGo</title>
-</head>
-<body>
-
+	<!-- Preload stylesheet -->
 	<style>
+		/* fonts */
+		.fa,.fab,.fal,.far,.fas {
+			-moz-osx-font-smoothing: grayscale;
+			-webkit-font-smoothing: antialiased;
+			display: inline-block;
+			font-style: normal;
+			font-variant: normal;
+			text-rendering: auto;
+			line-height: 1
+		}
+		.fa-facebook-f:before {
+			content: "\f39e"
+		}
+		.fa-instagram:before {
+			content: "\f16d"
+		}
+		.fa-pinterest-p:before {
+			content: "\f231"
+		}
+		.fa-twitter:before {
+			content: "\f099"
+		}
+		.fab {
+			font-family: "Font Awesome 5 Brands"
+		}
+
 		/* preloader */
 		.preloader.hide{
 			opacity: 0;
@@ -42,6 +63,7 @@
 			align-items: center;
 			flex-direction: column;
 			transition: all 1s;
+			font-family: 'Montserrat', sans-serif;
 		}
 		.preload_animation :nth-child(1) { 
 			color: #e85757; 
@@ -93,6 +115,11 @@
 			100% { top: 0px; }
 		}
 	</style>
+
+
+	<title>MoGo</title>
+</head>
+<body>
 
 	<!-- preloader styles -->
 	<div class="preloader" id="preloader">
@@ -958,7 +985,7 @@
 	</script>
 	
 	<!-- Connect JS -->
-	<script type="text/javascript" src="JS/main.js"></script>
+	<script type="text/javascript" async src="JS/main.js"></script>
 
 </body>
 </html><a>
