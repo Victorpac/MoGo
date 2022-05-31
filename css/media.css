@@ -1,11 +1,11 @@
 /* leptop adoptation */
 @media (max-width: 1441px) {
 	/* testimonial */
-	[class^="quote_item"] > img {
+	[class^="comments_item"] > img {
 		padding: 32px;
 		transform: scale(1);
 	}
-	.quote__inner_content {
+	.comments__inner_content {
 		font-size: 22px;
 		margin-left: 40px;
 	}
@@ -73,7 +73,7 @@
 
     .services .serv_item {
     	width: 70%;
-    	margin: 20px auto;
+        margin: 15px auto;
     }
 
     /* Service(2) */
@@ -111,8 +111,8 @@
         font-size: 80px;
     }
 
-    /* Quote */
-    .quote__inner > img {
+    /* comments */
+    .comments__inner > img {
     	display: none;
     }
 
@@ -148,7 +148,7 @@
     }
 
     /* About us */
-    .slide, .slide .pict {
+    /* .slide, .slide .pict {
         background: unset;
     }
     .slide:hover .pict {
@@ -160,7 +160,7 @@
     }
     .slide:hover .pict__img {
         opacity: 1;
-    }
+    } */
 
 
     /* Service (2) */
@@ -251,13 +251,22 @@
     	width: 100%;
     }
 
+    .services img {
+        margin-right: 20px;
+    }
+
     .services .serv_item {
-    	width: 70%;
+    	width: 85%;
+        margin: 20px auto;
+    }
+
+    .services .serv_item h4 {
+        margin-bottom: 5px;
     }
 
     /* Feature */
     .feauture .feature_img_1 {
-    	width: 80%;
+    	width: 89%;
     }
 
     .feauture .feature_img_2 {
@@ -266,8 +275,8 @@
 	    margin-left: -25%;
     }
 
-    /* Quote */
-    .quote__inner {
+    /* comments */
+    .comments__inner {
     	padding: 70px 20px;
     }
 

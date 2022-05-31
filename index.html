@@ -5,14 +5,17 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- Connect style -->
-	<link rel="preload" as="style" type="text/css" href="css/main.min.css" onload="this.onload=null;this.rel='stylesheet'">
-	<link rel="preload" as="style" type="text/css" href="css/media.min.css" onload="this.onload=null;this.rel='stylesheet'">
+	<!-- <link rel="preload" as="style" type="text/css" href="css/main.min.css" onload="this.onload=null;this.rel='stylesheet'">
+	<link rel="preload" as="style" type="text/css" href="css/media.min.css" onload="this.onload=null;this.rel='stylesheet'"> -->
+
+	<link rel="preload" as="style" type="text/css" href="css/main.css" onload="this.onload=null;this.rel='stylesheet'">
+	<link rel="preload" as="style" type="text/css" href="css/media.css" onload="this.onload=null;this.rel='stylesheet'">
 
 
 	<!-- Connect fonts -->
 	<link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+	<!-- <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Montserrat:wght@400;700&display=swap" rel="stylesheet"> -->
 
 	<!-- Preload stylesheet -->
 <style>
@@ -180,10 +183,8 @@
 			                <a class="dd-menu__link" href="#">Blog</a>
 			                <a class="dd-menu__link" href="#">Work</a>
 			                <a class="dd-menu__link" href="#">Contact</a>
+											<a class="dd-menu__link" href="#">Cart</a>
 			            </nav>
-			            <a class="icon__card" href="#">
-		                    <i class="fas fa-shopping-cart"></i>
-		                </a>
 	            	</div>
 	            </div> <!-- /.menu -->
 
@@ -275,7 +276,7 @@
 						</div>
 						<div class="pict__inner">
 							<img src="media/icons/users.png">
-							<p>Super team</p>
+							<p>team</p>
 						</div>
 					</div>
 				</a>
@@ -287,7 +288,7 @@
 						</div>
 						<div class="pict__inner">
 							<img src="media/icons/users.png">
-							<p>Super team</p>
+							<p>team</p>
 						</div>
 					</div>
 				</a>
@@ -299,7 +300,7 @@
 						</div>
 						<div class="pict__inner">
 							<img src="media/icons/users.png">
-							<p>Super team</p>
+							<p>team</p>
 						</div>
 					</div>
 				</a>
@@ -462,35 +463,36 @@
 		</div>
 	</div>
 
-	<!-- Quotes -->
-	<div class="quote">
-		<a class="btn__back" onclick="showSlide(0, quote_slider, -1);"></a>
-		<div class="container" style="display: flex;">
-			<div class="quote__inner">
-				<div class="quote_item slider_item active">
+	<!-- Comments -->
+	<div class="comments" id="comments__slider">
+		
+		<div class="container viewport" style="display: flex;">
+			<ul class="comments__inner slide_list" style="width: calc(100vw*3);">
+				<li class="comments_item slider_item active">
 					<img src="media/icons/icon__messages.png" alt="">
-					<div class="quote__inner_content">
-						<p class="quote__text">“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.”</p>
-					<p class="quote__author">Jon Doe</p>
+					<div class="comments__inner_content">
+						<p class="comments__text">“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.”</p>
+					<p class="comments__author">Jon Doe</p>
 					</div>
-				</div>
-				<div class="quote_item slider_item next">
+				</li>
+				<li class="comments_item slider_item next">
 					<img src="media/icons/icon__messages.png" alt="">
-					<div class="quote__inner_content">
-						<p class="quote__text">“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.”</p>
-					<p class="quote__author">Jon Doe</p>
+					<div class="comments__inner_content">
+						<p class="comments__text">“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.”</p>
+					<p class="comments__author">Jon Doe</p>
 					</div>
-				</div>
-				<div class="quote_item slider_item back">
+				</li>
+				<li class="comments_item slider_item back">
 					<img src="media/icons/icon__messages.png" alt="">
-					<div class="quote__inner_content">
-						<p class="quote__text">“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.”</p>
-					<p class="quote__author">Jon Doe</p>
+					<div class="comments__inner_content">
+						<p class="comments__text">“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.”</p>
+					<p class="comments__author">Jon Doe</p>
 					</div>
-				</div>
-			</div>
+				</li>
+			</ul>
 		</div>
-		<a class="btn__next" onclick="showSlide(0, quote_slider, 1);"></a>
+		<a class="btn__prev_slide"></a>
+		<a class="btn__next_slide"></a>
 	</div>
 
 	<!-- Banner "Our team" -->
@@ -711,27 +713,27 @@
 	<div class="testimonial">
 		<div class="btn__back" onclick="showSlide(0, tstmn_slider, -1)"></div>
 		<div class="container">
-			<div class="quote__inner">
+			<div class="comments__inner">
 
-				<div class="quote_item slider_item_1 active">
+				<div class="comments_item slider_item_1 active">
 					<img src="media/images/webp/testimonial__ava.webp" alt="">
-					<div class="quote__inner_content">
-						<p class="quote__text">“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.”</p>
-					<p class="quote__author">Jon Doe</p>
+					<div class="comments__inner_content">
+						<p class="comments__text">“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.”</p>
+					<p class="comments__author">Jon Doe</p>
 					</div>
 				</div>
-				<div class="quote_item slider_item_2 next">
+				<div class="comments_item slider_item_2 next">
 					<img src="media/images/webp/testimonial__ava.webp" alt="">
-					<div class="quote__inner_content">
-						<p class="quote__text">“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.”</p>
-					<p class="quote__author">Jon Doe</p>
+					<div class="comments__inner_content">
+						<p class="comments__text">“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.”</p>
+					<p class="comments__author">Jon Doe</p>
 					</div>
 				</div>
-				<div class="quote_item slider_item_1 back">
+				<div class="comments_item slider_item_1 back">
 					<img src="media/images/webp/testimonial__ava.webp" alt="">
-					<div class="quote__inner_content">
-						<p class="quote__text">“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.”</p>
-					<p class="quote__author">Jon Doe</p>
+					<div class="comments__inner_content">
+						<p class="comments__text">“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.”</p>
+					<p class="comments__author">Jon Doe</p>
 					</div>
 				</div>
 

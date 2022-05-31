@@ -1,7 +1,7 @@
 "use strict";
 
 function addActive(name, id) {
-	i=1
+	let i = 1;
 	while (i<4) {
 		document.getElementById(name+'_'+i).classList.remove('active');
 		i++;
@@ -10,8 +10,11 @@ function addActive(name, id) {
 }
 
 function openMenu() {
-	console.log('dsfsd');
 	let top_nav_menu = document.querySelector('#menu');
+	let docHeight = document.documentElement.clientHeight;
+
+	top_nav_menu.style.height = `${(docHeight/100)*60}px`;
+
 	if (top_nav_menu.classList.contains('active')) {
 		top_nav_menu.classList.remove('active');
 	}else {
@@ -36,15 +39,16 @@ class Slider {
 
 		this.viewport 			= document.querySelector(`#${parrams.slider_id} .${parrams.viewport}`);
 		this.carousel 			= document.querySelector(`#${parrams.slider_id} .${parrams.carousel}`);
-		this.navMenu 				= document.querySelectorAll(`#${parrams.slider_id} .${parrams.navMenu} .slider_nav_item`);
 		this.navButtonNext 	= document.querySelector(`#${parrams.slider_id} .${parrams.next}`);
 		this.navButtonPrev 	= document.querySelector(`#${parrams.slider_id} .${parrams.prev}`);
 		this.currentSlide		= parrams.currentSlide || 0;
+		if (parrams.navMenu) {
+			this.navMenu 			= document.querySelectorAll(`#${parrams.slider_id} .${parrams.navMenu} .slider_nav_item`);
+		}
 
 		// Start slider
 		this.start();
 	}
-
 
 	start() {
 		// Removing extra nav-arrows
@@ -56,9 +60,10 @@ class Slider {
 		}
 
 		this.startListening();
-		this.timerStart();
+		if (this.navMenu) {
+			this.timerStart();
+		}
 	}
-
 
 	showSlide(slide_id) {		
 		if (slide_id <= -(this.carousel.children.length-1)) {
@@ -81,10 +86,11 @@ class Slider {
 		}
 		this.carousel.style.transform = `translate3d(${slide_id * 100}vw, 0, 0)`;
 		this.currentSlide = slide_id;
-		this.timerClear();
-		this.timerStart();
+		if (this.navMenu) {
+			this.timerClear();
+			this.timerStart();
+		}
 	}
-
 
 	startListening() {
 		// Events for navigration buttons
@@ -101,11 +107,13 @@ class Slider {
 		// this.viewport.addEventListener('click', () => this.carousel.style.transitionDuration = '1s');
 
 		// Events for navigation menu
-		for (let el of this.navMenu) {
-			el.addEventListener('click', () => this.showSlide(-el.dataset.slideId));
+		if (this.navMenu) {
+			for (const el of this.navMenu) {
+				el.addEventListener('click', () => this.showSlide(-el.dataset.slideId));
+			}
 		}
+		
 	}
-
 
 	swipeStart(event) {
 		let start_pos = event.clientX;
@@ -114,19 +122,22 @@ class Slider {
 		this.timerPause();
 		
 		this.viewport.addEventListener('pointerup', this.swiperPointerUp = () => {
+			console.log("Pointer is up");
 			if (Math.abs(this.offset) > 30) {
 				if ((this.offset < 0) && (this.currentSlide > -(this.carousel.children.length-1))) {
+					console.log('Condition 1');
 					this.showSlide(this.currentSlide-1);
 				}else if ((this.offset > 0) && (this.currentSlide < 0)) {
+					console.log('Condition 2');
 					this.showSlide(this.currentSlide+1);
 				}else {
+					console.log('Condition 3');
 					this.carousel.style.transform = `translate3d(${this.currentSlide * 100}vw, 0, 0)`;
 				}
-				this.offset = undefined;
+				this.offset = 0;
 			}else {
 				this.carousel.style.transform = `translate3d(${this.currentSlide * 100}vw, 0, 0)`;
 			}
-			
 			this.viewport.removeEventListener('pointermove', this.swiperPointerMove);
 			this.viewport.removeEventListener('pointerup', this.swiperPointerUp);
 			this.carousel.style.transitionDuration = '.5s';
@@ -141,10 +152,9 @@ class Slider {
 		});
 	}
 
-
 	timerStart(time=7000) {
-		let navigation_element = this.navMenu[Math.abs(this.currentSlide)];
-		this.timer_progress = navigation_element.querySelector('.timer_progress');
+		let navigation_element = this.navMenu[Math.abs(this.currentSlide)] ?? undefined;
+		this.timer_progress = navigation_element?.querySelector('.timer_progress');
 
 		let i = 0;
 		this.timer = setInterval(() => {
@@ -160,16 +170,13 @@ class Slider {
 		}, time/100)
 	}
 
-
 	timerPause() {
 		this.timerIsPaused = true;
 	}
 
-
 	timerPlay() {
 		this.timerIsPaused = false;
 	}
-
 
 	timerClear() {
 		clearInterval(this.timer);
@@ -188,7 +195,16 @@ let header_slider_set = {
 	prev:					'btn__prev_slide'
 }
 
+let comments_slider_set = {
+	slider_id: 		'comments__slider',
+	viewport: 		'viewport',
+	carousel: 		'slide_list',
+	next:					'btn__next_slide',
+	prev:					'btn__prev_slide'
+}
+
 
 document.addEventListener('ContentLoaded', () => {
-	let slider_top = new Slider(header_slider_set);
+	let slider_top 				= new Slider(header_slider_set);
+	let comments__slider 	= new Slider(comments_slider_set);
 });
