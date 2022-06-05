@@ -17,6 +17,7 @@ function openMenu() {
 
 	if (top_nav_menu.classList.contains('active')) {
 		top_nav_menu.classList.remove('active');
+		top_nav_menu.style.height = 'unset';
 	}else {
 		top_nav_menu.classList.add('active');
 	}
@@ -37,14 +38,15 @@ class Slider {
 	constructor(parrams) {
 		this.slider 				= document.querySelector('#' + parrams.slider_id);
 
-		this.viewport 			= document.querySelector(`#${parrams.slider_id} .${parrams.viewport}`);
-		this.carousel 			= document.querySelector(`#${parrams.slider_id} .${parrams.carousel}`);
-		this.navButtonNext 	= document.querySelector(`#${parrams.slider_id} .${parrams.next}`);
-		this.navButtonPrev 	= document.querySelector(`#${parrams.slider_id} .${parrams.prev}`);
+		this.viewport 			= document.querySelector(`#${parrams.slider_id} .viewport`);
+		this.carousel 			= document.querySelector(`#${parrams.slider_id} .slide_list`);
+		this.navButtonNext 	= document.querySelector(`#${parrams.slider_id} .btn__next_slide`);
+		this.navButtonPrev 	= document.querySelector(`#${parrams.slider_id} .btn__prev_slide`);
 		this.currentSlide		= parrams.currentSlide || 0;
 		if (parrams.navMenu) {
 			this.navMenu 			= document.querySelectorAll(`#${parrams.slider_id} .${parrams.navMenu} .slider_nav_item`);
 		}
+		this.delay					=parrams.delay;
 
 		// Start slider
 		this.start();
@@ -61,11 +63,13 @@ class Slider {
 
 		this.startListening();
 		if (this.navMenu) {
-			this.timerStart();
+			this.timerStart(this.delay);
 		}
 	}
 
-	showSlide(slide_id) {		
+	showSlide(slide_id) {
+		this.navButtonNext.style.display = '';
+		this.navButtonPrev.style.display = '';
 		if (slide_id <= -(this.carousel.children.length-1)) {
 			this.navButtonNext.style.display = 'none';
 
@@ -80,15 +84,12 @@ class Slider {
 				this.showSlide(-(this.carousel.children.length-1));
 				return;
 			}
-		} else {
-			this.navButtonNext.style.display = '';
-			this.navButtonPrev.style.display = '';
 		}
 		this.carousel.style.transform = `translate3d(${slide_id * 100}vw, 0, 0)`;
 		this.currentSlide = slide_id;
 		if (this.navMenu) {
 			this.timerClear();
-			this.timerStart();
+			this.timerStart(this.delay);
 		}
 	}
 
@@ -121,7 +122,7 @@ class Slider {
 
 		this.timerPause();
 		
-		this.viewport.addEventListener('pointerup', this.swiperPointerUp = () => {
+		document.addEventListener('pointerup', this.swiperPointerUp = () => {
 			console.log("Pointer is up");
 			if (Math.abs(this.offset) > 30) {
 				if ((this.offset < 0) && (this.currentSlide > -(this.carousel.children.length-1))) {
@@ -138,23 +139,25 @@ class Slider {
 			}else {
 				this.carousel.style.transform = `translate3d(${this.currentSlide * 100}vw, 0, 0)`;
 			}
-			this.viewport.removeEventListener('pointermove', this.swiperPointerMove);
-			this.viewport.removeEventListener('pointerup', this.swiperPointerUp);
+			document.removeEventListener('pointermove', this.swiperPointerMove);
+			document.removeEventListener('pointerup', this.swiperPointerUp);
 			this.carousel.style.transitionDuration = '.5s';
-			setTimeout(() => this.carousel.style.transitionDuration = 'unset', 500);
+			setTimeout(() => this.carousel.style.transitionDuration = '1s', 500);
 			this.timerPlay();
 		});
 
-		this.viewport.addEventListener('pointermove', this.swiperPointerMove = (e) => {
+		document.addEventListener('pointermove', this.swiperPointerMove = (e) => {
 			this.carousel.style.transitionDuration = "0s";
 			this.offset = ((e.clientX - start_pos) / window.innerWidth) * 100;
 			this.carousel.style.transform = `translate3d(${(slider_offset + this.offset)}vw, 0vw, 0vw)`;
 		});
 	}
 
-	timerStart(time=7000) {
+	timerStart(time=7000) {	
 		let navigation_element = this.navMenu[Math.abs(this.currentSlide)] ?? undefined;
 		this.timer_progress = navigation_element?.querySelector('.timer_progress');
+
+		if (time === 0) return;
 
 		let i = 0;
 		this.timer = setInterval(() => {
@@ -187,24 +190,22 @@ class Slider {
 
 // Slider settings
 let header_slider_set = {
-	slider_id: 		'header_slider',
-	viewport: 		'viewport',
-	carousel: 		'slide_list',
-	navMenu:			'slider_nav',
-	next:					'btn__next_slide',
-	prev:					'btn__prev_slide'
+	slider_id: 'header_slider',
+	navMenu: 'slider_nav',
+	delay: 7000
 }
 
 let comments_slider_set = {
-	slider_id: 		'comments__slider',
-	viewport: 		'viewport',
-	carousel: 		'slide_list',
-	next:					'btn__next_slide',
-	prev:					'btn__prev_slide'
+	slider_id: 'comments__slider'
+}
+
+let testimonial_slider_set = {
+	slider_id: 'tcomments__slider'
 }
 
 
 document.addEventListener('ContentLoaded', () => {
-	let slider_top 				= new Slider(header_slider_set);
-	let comments__slider 	= new Slider(comments_slider_set);
+	let slider_top 						= new Slider(header_slider_set);
+	let comments__slider 			= new Slider(comments_slider_set);
+	let testimonial_slider 		= new Slider(testimonial_slider_set);
 });
