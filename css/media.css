@@ -10,6 +10,17 @@
         max-width: 1230px;
     }
 
+    /* HEADER */
+    .header {
+        padding: 15px 0px;
+    }
+
+    .nav__link.search {
+        --searchFieldWidth: 250px;
+	    --searchFieldPadding: 10px 10px;
+    }
+
+
     /* SLIDER (carousel) */
     .inner__title {        
         font-size: 116px;
@@ -97,14 +108,14 @@
     	 justify-content: center;
     }
 
-    .fact_item {
+    .facts__item {
     	width: 33.33333%;
     	border: none;
     	flex: none;
         padding: 30px 0px;
     }
 
-    .fact_item p {
+    .facts__item p {
     	font-size: 40px;
     }
 
@@ -342,7 +353,7 @@
 
 
     /* Facts */
-    .fact_item {
+    .facts__item {
         padding: 10px 0px;
     }
 
@@ -371,11 +382,11 @@
 
 
     /* Feature */
-    .feauture .feature_img_1 {
+    .feature .feature_img_1 {
     	width: 89%;
     }
 
-    .feauture .feature_img_2 {
+    .feature .feature_img_2 {
 	    width: 34.833333%;
 	    margin-bottom: -15%;
 	    margin-left: -25%;

@@ -11,7 +11,6 @@
 	<!-- <link rel="preload" as="style" type="text/css" href="css/main.css" onload="this.onload=null;this.rel='stylesheet'">
 	<link rel="preload" as="style" type="text/css" href="css/media.css" onload="this.onload=null;this.rel='stylesheet'"> -->
 
-
 	<!-- Connect fonts -->
 	<link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
@@ -140,19 +139,20 @@
 	<header class="header">
 	    <div class="container">
 	        <div class="header__inner">
-	            <a class="header__logo">MoGo</a>
+	            <a class="header__logo" href="#">MoGo</a>
 
 	            <nav class="nav">
-	                <a class="nav__link" href="#">About</a>
-	                <a class="nav__link" href="#">Service</a>
-	                <a class="nav__link" href="#">Blog</a>
-	                <a class="nav__link" href="#">Work</a>
-	                <a class="nav__link" href="#">Contact</a>
-	                <a class="nav__link" href="#">
-	                    <i class="fas fa-shopping-cart"></i>
+	                <a class="nav__link" href="#about">About</a>
+	                <a class="nav__link" href="#service">Service</a>
+	                <a class="nav__link" href="#blog">Blog</a>
+	                <a class="nav__link" href="#work">Work</a>
+	                <a class="nav__link" href="#contact">Contact</a>
+	                <a class="nav__link" href="#cart">
+	                  <i class="fas fa-shopping-cart"></i>
 	                </a>
-	                <a class="nav__link" href="#">
-	                    <i class="fas fa-search"></i>
+	                <a class="nav__link search">
+										<i class="fas fa-search"></i>
+										<input type="text" class="search__field" placeholder="Search...">
 	                </a>
 	            </nav>
 
@@ -177,12 +177,12 @@
 			                </a>
 	            		</div>
 	            		<nav class="nav">
-			                <a class="dd-menu__link active" href="#">About</a>
-			                <a class="dd-menu__link" href="#">Service</a>
-			                <a class="dd-menu__link" href="#">Blog</a>
-			                <a class="dd-menu__link" href="#">Work</a>
-			                <a class="dd-menu__link" href="#">Contact</a>
-											<a class="dd-menu__link" href="#">Cart</a>
+			                <a class="dd-menu__link active" href="#about">About</a>
+			                <a class="dd-menu__link" href="#service">Service</a>
+			                <a class="dd-menu__link" href="#blog">Blog</a>
+			                <a class="dd-menu__link" href="#work">Work</a>
+			                <a class="dd-menu__link" href="#contact">Contact</a>
+											<a class="dd-menu__link" href="#cart">Cart</a>
 			            </nav>
 	            	</div>
 	            </div> <!-- /.menu -->
@@ -192,7 +192,7 @@
 	</header>
 
 	<!-- Slider -->
-	<section class="header_slider" id="header_slider">
+	<section class="header-slider" id="header_slider">
 		<div class="viewport">
 
 			<div class="btn__next_slide"></div>
@@ -259,7 +259,7 @@
 	</section>
 
 	<!-- Banner "about us" -->
-	<div class="about_us">
+	<div class="about_us _anim-items" id="about">
 		<div class="container">
 			<h3 class="title__question">What we do</h3>
 			<h2 class="sub__title">Story about us</h2>
@@ -310,33 +310,33 @@
 	</div>
 
 	<!-- Banner "facts" -->
-	<div class="facts">
+	<div class="facts _anim-items" id="facts">
 		<div class="container" style="display: flex;">
-			<div class="fact_item">
+			<div class="facts__item">
 				<div>
 					<p>42</p>
 				    Web Design Projects
 				</div>
 			</div>
-			<div class="fact_item">
+			<div class="facts__item">
 				<div>
 					<p>123</p>
 				    Happy client
 				</div>
 			</div>
-			<div class="fact_item">
+			<div class="facts__item">
 				<div>
 					<p>15</p>
 				    Award winner
 				</div>
 			</div>
-			<div class="fact_item">
+			<div class="facts__item">
 				<div>
 					<p>99</p>
 				    Cup of coffee
 				</div>
 			</div>
-			<div class="fact_item">
+			<div class="facts__item">
 				<div>
 					<p>24</p>
 				    Members
@@ -346,7 +346,7 @@
 	</div>
 
 	<!-- Banner about our partners -->
-	<div class="partners">
+	<div class="partners _anim-items" id="service">
 		<div class="container">
 
 			<h3 class="title__question">We work with</h3>
@@ -409,8 +409,8 @@
 		</div>
 	</div>
 
-	<!-- banner "feauture" -->
-	<div class="feauture">
+	<!-- banner "feature" -->
+	<div class="feature _anim-items">
 		<div class="container">
 			<h3 class="title__question">For all devices</h3>
 			<h2 class="sub__title">Unique design</h2>
@@ -420,7 +420,7 @@
 	</div>
 
 	<!-- Banner service (2) -->
-	<div class="service">
+	<div class="service _anim-items">
 		<div class="container">
 			<h3 class="title__question">Service</h3>
 			<h2 class="sub__title">what we do</h2>
@@ -607,7 +607,7 @@
 	</div>
 
 	<!-- Block "Some of our work" (portfolio) -->
-	<div class="portfolio">
+	<div class="portfolio" id="work">
 		<div class="conteiner">
 			<h3 class="title__question">What we do</h3>
 			<h2 class="sub__title">some of our work</h2>
@@ -709,7 +709,7 @@
 	</div> <!-- /.portfolio -->
 
 	<!-- "testimonial" -->
-	<div class="testimonial" id="tcomments__slider">
+	<div class="testimonial _anim-items" id="tcomments__slider">
 		
 		<div class="viewport">
 
@@ -756,7 +756,7 @@
 	</div> <!-- /.testimonial -->
 
 	<!-- Banner "What people say" -->
-	<div class="clients">
+	<div class="clients _anim-items">
 		<div class="container">
 			<h3 class="title__question">Happy Clients</h3>
 			<h2 class="sub__title">What people say</h2>
@@ -802,10 +802,10 @@
 	</div>
 
 	<!-- Blog -->
-	<div class="blog">
+	<div class="blog" id="blog">
 		<div class="container">
 
-			<h3 class="title__question">Our stories</h3>
+			<h3 class="title__question _anim-items">Our stories</h3>
 			<h2 class="sub__title">Latest blog</h2>
 
 			<div class="blog__inner">
@@ -882,7 +882,7 @@
 	</div>
 
 	<!-- Footer -->
-	<footer>
+	<footer id="contact">
 		<div class="container">
 			<div class="col">
 				<h1 class="title">MoGo</h1>
@@ -1013,6 +1013,6 @@
 	
 	<!-- Connect JS -->
 	<script type="text/javascript" async src="JS/main.js"></script>
-
+	
 </body>
 </html><a>
